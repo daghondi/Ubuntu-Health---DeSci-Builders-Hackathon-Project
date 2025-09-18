@@ -1,0 +1,64 @@
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+ubuntu_health_core = "11111111111111111111111111111112"
+treatment_passes = "11111111111111111111111111111113"
+recovery_logs = "11111111111111111111111111111114"
+sponsorship_escrow = "11111111111111111111111111111115"
+soulbound_tokens = "11111111111111111111111111111116"
+data_sharing = "11111111111111111111111111111117"
+
+[programs.devnet]
+ubuntu_health_core = "11111111111111111111111111111112"
+treatment_passes = "11111111111111111111111111111113"
+recovery_logs = "11111111111111111111111111111114"
+sponsorship_escrow = "11111111111111111111111111111115"
+soulbound_tokens = "11111111111111111111111111111116"
+data_sharing = "11111111111111111111111111111117"
+
+[programs.mainnet]
+ubuntu_health_core = "UbuntuHealthCoreProgram111111111111111111"
+treatment_passes = "TreatmentPassesProgram11111111111111111"
+recovery_logs = "RecoveryLogsProgram1111111111111111111"
+sponsorship_escrow = "SponsorshipEscrowProgram111111111111111"
+soulbound_tokens = "SoulboundTokensProgram1111111111111111"
+data_sharing = "DataSharingProgram111111111111111111111"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[workspace]
+types = "target/types"
+
+[[test.genesis]]
+address = "11111111111111111111111111111112"
+program = "target/deploy/ubuntu_health_core.so"
+
+[[test.genesis]]
+address = "11111111111111111111111111111113"
+program = "target/deploy/treatment_passes.so"
+
+[[test.genesis]]
+address = "11111111111111111111111111111114"
+program = "target/deploy/recovery_logs.so"
+
+[[test.genesis]]
+address = "11111111111111111111111111111115"
+program = "target/deploy/sponsorship_escrow.so"
+
+[[test.genesis]]
+address = "11111111111111111111111111111116"
+program = "target/deploy/soulbound_tokens.so"
+
+[[test.genesis]]
+address = "11111111111111111111111111111117"
+program = "target/deploy/data_sharing.so"

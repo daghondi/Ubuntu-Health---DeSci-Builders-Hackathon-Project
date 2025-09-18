@@ -1,0 +1,258 @@
+# Ubuntu Health Monitoring Configuration
+# Prometheus configuration for Ubuntu Health community metrics
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    ubuntu_community: 'ubuntu-health'
+    ubuntu_philosophy: 'i-am-because-we-are'
+    ubuntu_version: '1.0.0'
+
+# Rule files for Ubuntu Health community alerts
+rule_files:
+  - "ubuntu_health_rules.yml"
+  - "community_alerts.yml"
+  - "elder_council_monitoring.yml"
+
+# Alert manager configuration for Ubuntu community notifications
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+      path_prefix: /
+      scheme: http
+      timeout: 10s
+      
+# Scrape configurations for Ubuntu Health services
+scrape_configs:
+  # Prometheus self-monitoring with Ubuntu wisdom
+  - job_name: 'ubuntu-prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+    scheme: http
+    
+  # Ubuntu Health Frontend monitoring
+  - job_name: 'ubuntu-health-frontend'
+    static_configs:
+      - targets: ['frontend:3000']
+    scrape_interval: 15s
+    metrics_path: '/api/metrics'
+    scheme: http
+    scrape_timeout: 10s
+    honor_labels: true
+    params:
+      ubuntu_component: ['frontend']
+      ubuntu_healing: ['community-interface']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'frontend'
+      - source_labels: [__address__]
+        target_label: ubuntu_philosophy
+        replacement: 'i-am-because-we-are'
+        
+  # Ubuntu Health Backend monitoring
+  - job_name: 'ubuntu-health-backend'
+    static_configs:
+      - targets: ['backend:5000']
+    scrape_interval: 15s
+    metrics_path: '/api/metrics'
+    scheme: http
+    scrape_timeout: 10s
+    honor_labels: true
+    params:
+      ubuntu_component: ['backend']
+      ubuntu_healing: ['community-consensus']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'backend'
+      - source_labels: [__address__]
+        target_label: ubuntu_consensus
+        replacement: 'enabled'
+        
+  # Ubuntu Wisdom Service monitoring
+  - job_name: 'ubuntu-wisdom-service'
+    static_configs:
+      - targets: ['ubuntu_wisdom:3001']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+    scheme: http
+    scrape_timeout: 15s
+    params:
+      ubuntu_component: ['wisdom']
+      ubuntu_healing: ['ancestral-knowledge']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'wisdom'
+      - source_labels: [__address__]
+        target_label: ubuntu_elders
+        replacement: 'active'
+        
+  # Traditional Healing Service monitoring
+  - job_name: 'ubuntu-traditional-healing'
+    static_configs:
+      - targets: ['traditional_healing:3002']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+    scheme: http
+    scrape_timeout: 15s
+    params:
+      ubuntu_component: ['traditional-healing']
+      ubuntu_healing: ['ancestral-medicine']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'traditional-healing'
+      - source_labels: [__address__]
+        target_label: ubuntu_cultural_sensitivity
+        replacement: 'required'
+        
+  # Community Consensus Validator monitoring
+  - job_name: 'ubuntu-consensus-validator'
+    static_configs:
+      - targets: ['consensus_validator:9091']
+    scrape_interval: 10s
+    metrics_path: '/metrics'
+    scheme: http
+    scrape_timeout: 5s
+    params:
+      ubuntu_component: ['consensus']
+      ubuntu_healing: ['collective-decision']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'consensus-validator'
+      - source_labels: [__address__]
+        target_label: ubuntu_governance
+        replacement: 'active'
+        
+  # Nginx Gateway monitoring
+  - job_name: 'ubuntu-nginx-gateway'
+    static_configs:
+      - targets: ['nginx:8080']
+    scrape_interval: 15s
+    metrics_path: '/nginx_status'
+    scheme: http
+    scrape_timeout: 5s
+    params:
+      ubuntu_component: ['gateway']
+      ubuntu_healing: ['community-access']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'nginx-gateway'
+        
+  # PostgreSQL Database monitoring
+  - job_name: 'ubuntu-postgres-db'
+    static_configs:
+      - targets: ['postgres:5432']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+    scheme: http
+    scrape_timeout: 10s
+    params:
+      ubuntu_component: ['database']
+      ubuntu_healing: ['community-memory']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'postgres-db'
+      - source_labels: [__address__]
+        target_label: ubuntu_data_sovereignty
+        replacement: 'community-owned'
+        
+  # Redis Cache monitoring
+  - job_name: 'ubuntu-redis-cache'
+    static_configs:
+      - targets: ['redis:6379']
+    scrape_interval: 20s
+    metrics_path: '/metrics'
+    scheme: http
+    scrape_timeout: 5s
+    params:
+      ubuntu_component: ['cache']
+      ubuntu_healing: ['collective-memory']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'redis-cache'
+        
+  # IPFS Storage monitoring
+  - job_name: 'ubuntu-ipfs-storage'
+    static_configs:
+      - targets: ['ipfs:5001']
+    scrape_interval: 60s
+    metrics_path: '/debug/metrics/prometheus'
+    scheme: http
+    scrape_timeout: 30s
+    params:
+      ubuntu_component: ['storage']
+      ubuntu_healing: ['distributed-knowledge']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'ipfs-storage'
+      - source_labels: [__address__]
+        target_label: ubuntu_decentralization
+        replacement: 'enabled'
+        
+  # Node Exporter for system metrics (if available)
+  - job_name: 'ubuntu-node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+    scheme: http
+    scrape_timeout: 10s
+    params:
+      ubuntu_component: ['system']
+      ubuntu_healing: ['infrastructure-health']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'node-exporter'
+        
+  # Docker Container monitoring (if cAdvisor available)
+  - job_name: 'ubuntu-cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+    scheme: http
+    scrape_timeout: 10s
+    params:
+      ubuntu_component: ['containers']
+      ubuntu_healing: ['container-health']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: ubuntu_service
+        replacement: 'cadvisor'
+      
+# Remote storage configuration for Ubuntu Health community metrics
+remote_write:
+  - url: "http://loki:3100/loki/api/v1/push"
+    write_relabel_configs:
+      - source_labels: [__name__]
+        target_label: ubuntu_metric_type
+        replacement: 'community-health'
+        
+# Storage configuration for Ubuntu Health metrics retention
+storage:
+  tsdb:
+    retention.time: 200h
+    retention.size: 50GB
+    path: /prometheus
+    wal-compression: true
+    
+# Feature flags for Ubuntu Health community monitoring
+feature_flags:
+  - promql-at-modifier
+  - memory-snapshot-on-shutdown
+  - expand-external-labels
+  - new-service-discovery-manager

@@ -1,0 +1,51 @@
+{
+  "name": "ubuntu-health-contracts",
+  "version": "0.1.0",
+  "description": "Ubuntu Health Solana smart contracts for community-driven healthcare",
+  "main": "index.js",
+  "scripts": {
+    "build": "anchor build",
+    "test": "anchor test",
+    "deploy": "anchor deploy",
+    "deploy-devnet": "anchor deploy --provider.cluster devnet",
+    "deploy-mainnet": "anchor deploy --provider.cluster mainnet",
+    "lint": "cargo clippy --all-targets --all-features -- -D warnings",
+    "format": "cargo fmt --all",
+    "test-unit": "cargo test",
+    "ubuntu-setup": "node scripts/ubuntu-community-setup.js",
+    "elder-council": "node scripts/elder-council-initialization.js"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.28.0",
+    "@solana/web3.js": "^1.78.4",
+    "@solana/spl-token": "^0.3.8",
+    "@metaplex-foundation/mpl-token-metadata": "^2.13.0",
+    "bn.js": "^5.2.1",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.1.1",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^5.1.6"
+  },
+  "keywords": [
+    "ubuntu",
+    "health",
+    "desci",
+    "blockchain",
+    "solana",
+    "healthcare",
+    "community",
+    "privacy"
+  ],
+  "author": "Ubuntu Health Community",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daghondi/Ubuntu-Health---DeSci-Builders-Hackathon-Project"
+  }
+}

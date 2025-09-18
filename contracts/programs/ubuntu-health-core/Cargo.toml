@@ -1,0 +1,20 @@
+[package]
+name = "ubuntu-health-core"
+version = "0.1.0"
+description = "Ubuntu Health Core Smart Contract - Embodying Ubuntu Philosophy in Healthcare"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "ubuntu_health_core"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.28.0"
+anchor-spl = "0.28.0"

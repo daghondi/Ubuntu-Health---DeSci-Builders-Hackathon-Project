@@ -1,0 +1,69 @@
+# Ubuntu Health Kubernetes Namespace
+# Community-driven healthcare platform namespace with Ubuntu philosophy
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ubuntu-health
+  labels:
+    name: ubuntu-health
+    ubuntu.philosophy: "i-am-because-we-are"
+    ubuntu.component: "community-healthcare"
+    ubuntu.healing: "digital-medicine"
+    ubuntu.wisdom: "ancestral-knowledge"
+    ubuntu.version: "1.0.0"
+  annotations:
+    ubuntu.community/description: "Ubuntu Health - Decentralized healthcare with Ubuntu philosophy"
+    ubuntu.community/contact: "community@ubuntu-health.org"
+    ubuntu.community/elders: "Traditional healers and community wisdom keepers"
+    ubuntu.community/languages: "English, Zulu, Xhosa, Swahili, Shona, and more"
+    ubuntu.community/established: "2024"
+    ubuntu.philosophy/motto: "Ubuntu ngumuntu ngabantu - I am because we are"
+    
+---
+# Ubuntu Health Development Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ubuntu-health-dev
+  labels:
+    name: ubuntu-health-dev
+    ubuntu.philosophy: "i-am-because-we-are"
+    ubuntu.component: "community-development"
+    ubuntu.environment: "development"
+    ubuntu.version: "1.0.0-dev"
+  annotations:
+    ubuntu.community/description: "Ubuntu Health Development Environment"
+    ubuntu.community/purpose: "Testing and development of community healing solutions"
+    
+---
+# Ubuntu Health Staging Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ubuntu-health-staging
+  labels:
+    name: ubuntu-health-staging
+    ubuntu.philosophy: "i-am-because-we-are"
+    ubuntu.component: "community-staging"
+    ubuntu.environment: "staging"
+    ubuntu.version: "1.0.0-staging"
+  annotations:
+    ubuntu.community/description: "Ubuntu Health Staging Environment"
+    ubuntu.community/purpose: "Pre-production testing with elder council blessing"
+    
+---
+# Ubuntu Health Monitoring Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ubuntu-health-monitoring
+  labels:
+    name: ubuntu-health-monitoring
+    ubuntu.philosophy: "i-am-because-we-are"  
+    ubuntu.component: "community-monitoring"
+    ubuntu.healing: "system-health"
+    ubuntu.version: "1.0.0"
+  annotations:
+    ubuntu.community/description: "Ubuntu Health Monitoring and Observability"
+    ubuntu.community/purpose: "Community health metrics and system wisdom"

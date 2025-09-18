@@ -1,0 +1,128 @@
+{
+  "name": "ubuntu-health-tests",
+  "version": "1.0.0",
+  "description": "Comprehensive testing suite for Ubuntu Health DeSci platform",
+  "scripts": {
+    "test": "npm run test:unit && npm run test:integration && npm run test:e2e",
+    "test:unit": "jest --config=config/jest.unit.config.js",
+    "test:integration": "jest --config=config/jest.integration.config.js",
+    "test:e2e": "cypress run",
+    "test:e2e:open": "cypress open",
+    "test:contracts": "cd ../contracts && anchor test",
+    "test:frontend": "cd ../frontend && npm test",
+    "test:backend": "cd ../backend && npm test",
+    "test:mobile": "cd ../mobile && npm test",
+    "test:zkproofs": "cd ../zkproofs && npm test",
+    "test:cultural": "jest --config=config/jest.cultural.config.js",
+    "test:consensus": "jest --testPathPattern=cultural/consensus",
+    "test:accessibility": "jest --testPathPattern=cultural/accessibility",
+    "test:ceremonies": "jest --testPathPattern=cultural/ceremonies",
+    "test:compliance": "jest --config=config/jest.compliance.config.js",
+    "test:security": "jest --config=config/jest.security.config.js",
+    "test:performance": "artillery run performance/load-test.yml",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "setup:test-env": "node scripts/setup-test-environment.js",
+    "cleanup:test-env": "node scripts/cleanup-test-environment.js",
+    "validate:cultural": "node scripts/validate-cultural-sensitivity.js",
+    "validate:ubuntu": "node scripts/validate-ubuntu-principles.js",
+    "lint:tests": "eslint . --ext .js,.ts,.jsx,.tsx",
+    "format:tests": "prettier --write \"**/*.{js,ts,jsx,tsx,json,md}\"",
+    "docker:test": "docker-compose -f docker-compose.test.yml up --build",
+    "k8s:test": "kubectl apply -f k8s/test-namespace.yaml"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.87.6",
+    "@coral-xyz/anchor": "^0.29.0",
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3",
+    "socket.io-client": "^4.7.4",
+    "mongodb-memory-server": "^9.1.1",
+    "redis-memory-server": "^0.7.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/react-native": "^12.4.2",
+    "@testing-library/jest-dom": "^6.1.5",
+    "jest-environment-jsdom": "^29.7.0",
+    "circom_tester": "^0.0.19",
+    "snarkjs": "^0.7.2",
+    "ffjavascript": "^0.2.63",
+    "web3": "^4.2.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.8",
+    "ts-jest": "^29.1.1",
+    "cypress": "^13.6.1",
+    "@cypress/react": "^8.0.0",
+    "detox": "^20.13.5",
+    "artillery": "^2.0.3",
+    "eslint": "^8.54.0",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "prettier": "^3.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
+    "@storybook/react": "^7.5.3",
+    "@storybook/addon-essentials": "^7.5.3",
+    "@storybook/addon-a11y": "^7.5.3",
+    "axe-core": "^4.8.3",
+    "@axe-core/react": "^4.8.3",
+    "jest-axe": "^8.0.0",
+    "puppeteer": "^21.5.2",
+    "lighthouse": "^11.3.0"
+  },
+  "jest": {
+    "projects": [
+      "./config/jest.unit.config.js",
+      "./config/jest.integration.config.js",
+      "./config/jest.cultural.config.js",
+      "./config/jest.compliance.config.js",
+      "./config/jest.security.config.js"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run validate:ubuntu",
+      "pre-push": "npm run test:unit && npm run validate:cultural"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "ubuntu-health",
+    "desci",
+    "blockchain",
+    "healthcare",
+    "testing",
+    "ubuntu-philosophy",
+    "solana",
+    "zero-knowledge",
+    "community-health",
+    "traditional-healing"
+  ],
+  "author": "Ubuntu Health Community",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ubuntu-health/desci-builders-hackathon.git",
+    "directory": "tests"
+  },
+  "bugs": {
+    "url": "https://github.com/ubuntu-health/desci-builders-hackathon/issues"
+  },
+  "homepage": "https://github.com/ubuntu-health/desci-builders-hackathon#readme"
+}
