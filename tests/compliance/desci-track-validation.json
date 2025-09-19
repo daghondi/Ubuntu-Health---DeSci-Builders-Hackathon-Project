@@ -1,0 +1,77 @@
+{
+  "Patient Care": {
+    "requirements": [
+      "Patient-centered design",
+      "Improved healthcare outcomes",
+      "Community health integration",
+      "Cultural sensitivity in care"
+    ],
+    "ubuntuIntegration": [
+      "Community healing circles",
+      "Elder guidance in treatment",
+      "Traditional healing integration",
+      "Collective care responsibility"
+    ],
+    "testValidation": "Patient journey tests with Ubuntu principles"
+  },
+  "Health Systems": {
+    "requirements": [
+      "Healthcare system improvement",
+      "Accessibility enhancement",
+      "Resource optimization",
+      "Community health metrics"
+    ],
+    "ubuntuIntegration": [
+      "Community consensus governance",
+      "Elder council oversight",
+      "Intergenerational knowledge sharing",
+      "Collective resource management"
+    ],
+    "testValidation": "System integration tests with Ubuntu governance"
+  },
+  "Biotech & Pharma": {
+    "requirements": [
+      "Drug discovery innovation",
+      "Clinical trial optimization",
+      "Research collaboration",
+      "Data sharing protocols"
+    ],
+    "ubuntuIntegration": [
+      "Traditional medicine integration",
+      "Community-based research",
+      "Elder knowledge documentation",
+      "Ethical research practices"
+    ],
+    "testValidation": "ZK-proof privacy tests with cultural validation"
+  },
+  "Longevity & Aging": {
+    "requirements": [
+      "Aging research advancement",
+      "Longevity intervention development",
+      "Age-related disease prevention",
+      "Quality of life improvement"
+    ],
+    "ubuntuIntegration": [
+      "Elder wisdom preservation",
+      "Intergenerational care models",
+      "Traditional longevity practices",
+      "Community support for aging"
+    ],
+    "testValidation": "Elder-focused accessibility and integration tests"
+  },
+  "Mental Health": {
+    "requirements": [
+      "Mental health innovation",
+      "Therapy accessibility",
+      "Community mental wellness",
+      "Stigma reduction"
+    ],
+    "ubuntuIntegration": [
+      "Community healing ceremonies",
+      "Collective mental wellness",
+      "Traditional spiritual healing",
+      "Elder counseling integration"
+    ],
+    "testValidation": "Mental health community integration tests"
+  }
+}

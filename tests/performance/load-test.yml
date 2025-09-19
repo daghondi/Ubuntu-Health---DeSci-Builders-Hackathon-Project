@@ -1,0 +1,70 @@
+
+scenario:
+  name: Ubuntu Health Community Load Test
+  weight: 100
+  engine: http
+  
+config:
+  target: 'http://localhost:8000'
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Community warmup
+    - duration: 300
+      arrivalRate: 20
+      name: Peak community usage
+    - duration: 120
+      arrivalRate: 5
+      name: Elder council governance
+  
+  variables:
+    ubuntuPrinciple:
+      - "I am because we are"
+      - "Community healing"
+      - "Intergenerational wisdom"
+      
+scenarios:
+  - name: Patient registration with Ubuntu integration
+    weight: 40
+    flow:
+      - get:
+          url: "/api/patient/register/ubuntu"
+      - post:
+          url: "/api/patient/create"
+          json:
+            culturalBackground: "{{ ubuntuPrinciple }}"
+            communityIntegration: true
+            elderCouncilConsent: true
+            
+  - name: Healing circle participation
+    weight: 30
+    flow:
+      - get:
+          url: "/api/healing-circles/available"
+      - post:
+          url: "/api/healing-circles/join"
+          json:
+            communityCommitment: true
+            ubuntuPrinciples: true
+            
+  - name: Elder council governance
+    weight: 20
+    flow:
+      - get:
+          url: "/api/governance/proposals"
+      - post:
+          url: "/api/governance/vote"
+          json:
+            elderCouncilValidation: true
+            communityConsensus: true
+            
+  - name: Traditional healing integration
+    weight: 10
+    flow:
+      - get:
+          url: "/api/traditional-healing/practices"
+      - post:
+          url: "/api/treatment/integrate-traditional"
+          json:
+            elderApproval: true
+            culturalSensitivity: true
