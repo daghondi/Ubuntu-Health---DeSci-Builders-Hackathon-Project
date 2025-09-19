@@ -1,0 +1,23 @@
+{
+  "name": "ubuntu-health-basic-tests",
+  "version": "1.0.0",
+  "description": "Basic testing setup for Ubuntu Health platform",
+  "scripts": {
+    "test": "node test-runner.js",
+    "test:ubuntu-philosophy": "node tests/ubuntu-philosophy-basic.test.js",
+    "test:project-structure": "node tests/project-structure.test.js",
+    "test:configuration": "node tests/configuration-validation.test.js",
+    "validate:desci-compliance": "node tests/desci-compliance.test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "ubuntu-health",
+    "desci",
+    "testing",
+    "ubuntu-philosophy"
+  ]
+}

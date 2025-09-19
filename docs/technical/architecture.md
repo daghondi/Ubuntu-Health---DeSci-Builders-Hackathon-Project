@@ -1,26 +1,27 @@
 # Ubuntu Health Technical Architecture
 
-*Comprehensive technical overview of the Ubuntu Health decentralized healthcare platform*
+*Comprehensive technical overview of the Ubuntu Health healthcare sponsorship platform*
 
 ## 🌍 Architecture Philosophy
 
-Ubuntu Health's architecture embodies the African philosophy of **"Ubuntu ngumuntu ngabantu"** (I am because we are) through its design principles:
+Ubuntu Health's architecture embodies the Ubuntu philosophy of **"I am because we are"** through its design principles:
 
-- **Decentralized by Design**: No single point of failure, reflecting Ubuntu's interconnectedness
-- **Community-Centric**: Every component serves the collective good
-- **Cultural Integration**: Traditional wisdom woven into modern technology
-- **Privacy-Preserving**: Individual sovereignty within community responsibility
-- **Scalable Consensus**: Elder council guidance integrated with blockchain governance
+- **Decentralized by Design**: Blockchain-based smart contracts with no single point of failure
+- **Community-Centric**: Platform connects patients, sponsors, and healthcare providers
+- **Privacy-Preserving**: Zero-knowledge proofs for research contribution
+- **Transparent**: All funding and milestone progress visible on blockchain
+- **Scalable**: Built on Solana for high-throughput healthcare transactions
 
 ## 🏗️ System Architecture Overview
 
 ```mermaid
 graph TB
-    subgraph "Ubuntu Health Ecosystem"
+    subgraph "Ubuntu Health Platform"
         subgraph "Frontend Layer"
-            FE[React/Next.js Frontend]
-            MA[React Native Mobile App]
-            UW[Ubuntu Wisdom Interface]
+            FE[React/TypeScript Frontend]
+            TRB[Treatment Request Browser]
+            SD[Sponsor Dashboard]
+            RL[Recovery Logger]
         end
         
         subgraph "API Gateway Layer"
@@ -31,22 +32,21 @@ graph TB
         subgraph "Backend Services"
             API[Node.js/Express API]
             WS[WebSocket/Socket.IO]
-            UC[Ubuntu Consensus Service]
-            TH[Traditional Healing Service]
-            UWS[Ubuntu Wisdom Service]
+            IPFS[IPFS Integration Service]
+            FHIR[FHIR/HL7 API Service]
         end
         
         subgraph "Blockchain Layer"
             SC[Solana Smart Contracts]
-            EC[Elder Council MultiSig]
-            UT[Ubuntu Treasury]
-            CV[Consensus Validator]
+            TP[Treatment Pass NFTs]
+            ES[Milestone Escrow]
+            PV[Provider Verification]
         end
         
         subgraph "Storage Layer"
             PG[(PostgreSQL)]
             RD[(Redis Cache)]
-            IPFS[IPFS Storage]
+            IPFS_S[IPFS Storage]
             FS[File System]
         end
         

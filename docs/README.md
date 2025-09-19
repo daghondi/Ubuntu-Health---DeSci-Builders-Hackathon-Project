@@ -1,12 +1,12 @@
 # Ubuntu Health - Complete Documentation
 
-*Comprehensive documentation for the Ubuntu Health decentralized healthcare platform*
+*Comprehensive documentation for the Ubuntu Health healthcare sponsorship platform*
 
 ## 🌍 Welcome to Ubuntu Health
 
-**"Ubuntu ngumuntu ngabantu"** - *I am because we are*
+**"I am because we are"** - *Ubuntu Philosophy*
 
-Ubuntu Health represents a revolutionary approach to healthcare that seamlessly blends the African philosophy of Ubuntu with cutting-edge blockchain technology. Our platform creates a decentralized healthcare ecosystem where traditional healing wisdom meets modern medical innovation, ensuring healthcare access that honors both individual sovereignty and communal responsibility.
+Ubuntu Health is a decentralized healthcare sponsorship platform that connects patients needing treatment with sponsors willing to help. Built with Ubuntu Health branding and community-centered approach, the platform features NFT treatment passes, recovery documentation, and privacy-preserving research contribution.
 
 ## 📚 Documentation Structure
 
@@ -23,27 +23,27 @@ Comprehensive technical guides for developers, system administrators, and techni
 - **[Security Guide](./technical/security.md)** - Security best practices and protocols
 
 ### 👥 [User Guides](./user-guides/)
-Step-by-step guides for community members, patients, sponsors, and healers.
+Step-by-step guides for patients, sponsors, and healthcare providers.
 
 - **[Getting Started](./user-guides/getting-started.md)** - Introduction to Ubuntu Health platform
-- **[Patient Guide](./user-guides/patients.md)** - How to access healthcare through Ubuntu Health
-- **[Sponsor Guide](./user-guides/sponsors.md)** - Supporting community health through sponsorship
-- **[Healer Guide](./user-guides/healers.md)** - Traditional and modern healer onboarding
-- **[Community Guide](./user-guides/community.md)** - Building and participating in Ubuntu communities
+- **[Patient Guide](./user-guides/patients.md)** - Creating treatment requests and recovery logging
+- **[Sponsor Guide](./user-guides/sponsors.md)** - Discovering and funding treatment requests
+- **[Provider Guide](./user-guides/providers.md)** - Healthcare provider verification and milestone validation
+- **[Recovery Documentation](./user-guides/recovery.md)** - Using the recovery logging system
 - **[Wallet Setup](./user-guides/wallet-setup.md)** - Cryptocurrency wallet configuration
-- **[Governance Participation](./user-guides/governance.md)** - Participating in DAO governance
-- **[Mobile App Guide](./user-guides/mobile-app.md)** - Using the Ubuntu Health mobile application
+- **[Privacy Settings](./user-guides/privacy.md)** - Managing data sharing and research contribution
+- **[Platform Navigation](./user-guides/navigation.md)** - Using the Ubuntu Health interface
 
-### 🙏 [Ubuntu Philosophy](./ubuntu-philosophy/)
-Deep exploration of Ubuntu principles and their integration into healthcare technology.
+### 🏥 [Ubuntu Health Branding](./branding/)
+Brand guidelines and design system for the Ubuntu Health platform.
 
-- **[Ubuntu Principles](./ubuntu-philosophy/principles.md)** - Core Ubuntu philosophy and values
-- **[Healthcare Integration](./ubuntu-philosophy/healthcare.md)** - Applying Ubuntu to modern healthcare
-- **[Traditional Healing](./ubuntu-philosophy/traditional-healing.md)** - Honoring ancestral medical wisdom
-- **[Community Governance](./ubuntu-philosophy/governance.md)** - Ubuntu-based decision making
-- **[Cultural Sensitivity](./ubuntu-philosophy/cultural-sensitivity.md)** - Respectful technology integration
-- **[Elder Wisdom](./ubuntu-philosophy/elder-wisdom.md)** - Learning from community elders
-- **[Ceremony Integration](./ubuntu-philosophy/ceremonies.md)** - Traditional ceremonies in digital spaces
+- **[Brand Guidelines](./branding/ubuntu-health-guide.md)** - Ubuntu Health visual identity and messaging
+- **[UI Components](./branding/ui-components.md)** - Design system and component library
+- **[Community Approach](./branding/community-centered.md)** - Community-centered healthcare design principles
+- **[Accessibility](./branding/accessibility.md)** - Inclusive design for global healthcare access
+- **[Color Palette](./branding/colors.md)** - Ubuntu Health color scheme and usage
+- **[Typography](./branding/typography.md)** - Font choices and text styling guidelines
+- **[Iconography](./branding/icons.md)** - Icon system and visual elements
 
 ### 🔌 [API Reference](./api-reference/)
 Complete API documentation for developers and integrators.

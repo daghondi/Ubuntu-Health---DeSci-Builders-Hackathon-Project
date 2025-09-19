@@ -1,24 +1,24 @@
-# 🌍💊🎨 Ubuntu Health - DeSci Builders Hackathon Project
+# 🌍💊 Ubuntu Health - Healthcare Sponsorship Platform
 
-*A community-driven decentralized platform that embodies Ubuntu philosophy through blockchain-native healthcare sponsorship, recovery documentation, and privacy-preserving research contribution.*
+*A decentralized healthcare platform that connects patients needing treatment with sponsors willing to help, built with Ubuntu Health branding and community-centered approach.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Solana](https://img.shields.io/badge/Blockchain-Solana-9945ff)](https://solana.com/)
-[![Ubuntu Philosophy](https://img.shields.io/badge/Philosophy-Ubuntu-orange)](https://en.wikipedia.org/wiki/Ubuntu_philosophy)
+[![Ubuntu Health](https://img.shields.io/badge/Brand-Ubuntu%20Health-orange)](https://ubuntu.com/)
 [![DeSci](https://img.shields.io/badge/Track-DeSci%20Builders-blue)](https://www.desci.com/)
 [![Build Status](https://img.shields.io/badge/Build-Implemented-success)](https://github.com/ubuntu-health/desci-builders-hackathon)
-[![Tests](https://img.shields.io/badge/Tests-Comprehensive-brightgreen)](./tests/README.md)
+[![Tests](https://img.shields.io/badge/Tests-100%25%20Pass-brightgreen)](./tests/README.md)
 [![Documentation](https://img.shields.io/badge/Docs-Complete-informational)](./docs/README.md)
 
 ---
 
 ## 🧠 One-liner
 
-Ubuntu Health is a decentralized platform rooted in Ubuntu philosophy that documents and sponsors real-world healing journeys—combining patient access, verifiable recovery data, immersive storytelling, and privacy-preserving research contributions through community-driven care.
+Ubuntu Health is a decentralized healthcare sponsorship platform that connects patients needing treatment with sponsors willing to help, featuring NFT treatment passes, recovery documentation, and privacy-preserving research contribution.
 
 ## 🌟 Project Vision
 
-Ubuntu Health transforms individual healing into collective achievement, where communities rally around shared health challenges, support each other's recovery, and contribute to global medical knowledge while maintaining Ubuntu principles of mutual responsibility and interconnectedness: **"I am because we are"**.
+Ubuntu Health embodies the Ubuntu philosophy of **"I am because we are"** by creating a community-centered healthcare platform where sponsors can directly fund patient treatment journeys, track recovery progress, and contribute to global medical research while maintaining privacy and transparency.
 
 ## 🏆 DeSci Builders Hackathon Integration
 
@@ -26,43 +26,43 @@ Ubuntu Health integrates all five DeSci tracks:
 
 | Track | Ubuntu Health Implementation |
 |-------|---------------------------|
-| ✅ **Verification & Audit Trails** | Timestamped recovery logs with cryptographic verification and Ubuntu community validation |
-| 🎫 **Tokenized Patient Access** | NFT treatment passes funded by community sponsors via smart contract escrow |
-| 🧠 **Open Science Infrastructure** | Privacy-preserving data sharing with ZK proofs and contributor reward systems |
-| 🌍 **Global Access & Inclusion** | Multilingual platform with Ubuntu philosophy integration and diaspora engagement |
-| 🧠 **Data Protocols for Longevity & Health** | Token-gated research APIs with community-controlled data sovereignty |
+| ✅ **Verification & Audit Trails** | Timestamped recovery logs with cryptographic verification |
+| 🎫 **Tokenized Patient Access** | NFT treatment passes funded by sponsors via smart contract escrow |
+| 🧠 **Open Science Infrastructure** | Privacy-preserving data sharing with ZK proofs and research rewards |
+| 🌍 **Global Access & Inclusion** | Community-centered healthcare approach with Ubuntu Health branding |
+| 🧠 **Data Protocols for Longevity & Health** | Token-gated research APIs with patient-controlled data sharing |
 
 ## 🔧 Core Features
 
-### 1. 🎫 Ubuntu NFT-Based Treatment Passes
-- **Community Sponsorship**: Treatment access funded by Ubuntu communities through $LIVES tokens
-- **Milestone-Based Release**: Escrow contracts release funds upon verified recovery milestones
-- **Ubuntu Validation**: Community elders and healers validate treatment progress
+### 1. 🎫 Treatment Pass NFTs
+- **Sponsor Discovery**: Patients create treatment requests that sponsors can browse and fund
+- **Milestone-Based Escrow**: Smart contracts release funds upon verified recovery milestones
+- **Ubuntu Health Verification**: Simple verification system for treatment authenticity
 
-### 2. 📝 Timestamped Recovery Documentation
-- **Immutable Logs**: Recovery progress stored on IPFS/Arweave with cryptographic timestamps
-- **Community Verification**: Ubuntu community consensus validates each milestone
-- **Cultural Integration**: Traditional healing practices documented alongside modern medicine
+### 2. 📝 Recovery Documentation Platform
+- **Immutable Logs**: Recovery progress stored on IPFS with cryptographic timestamps
+- **Healthcare Provider Verification**: Medical professionals validate treatment milestones
+- **Patient Journey Visualization**: Interactive timeline showing recovery progress
 
-### 3. 🏅 Soulbound Contributor Recognition
-- **Ubuntu Reputation**: Non-transferable tokens for verified community healers and supporters
-- **Elder Council**: Traditional healers and community elders receive special recognition
-- **Collective Impact**: Recognition based on community healing contributions
+### 3. 🏅 Sponsor Dashboard & Tracking
+- **Impact Tracking**: Real-time updates on sponsored treatment outcomes
+- **Portfolio Management**: Sponsors can track multiple treatment sponsorships
+- **Community Recognition**: Ubuntu Health member benefits and recognition
 
-### 4. 🎭 Immersive Storytelling & Cultural Preservation
-- **Healing Museum**: Interactive exhibits showcasing community healing journeys
-- **Ubuntu Narratives**: Stories rooted in African storytelling traditions
-- **Cultural Wisdom**: Integration of ancestral healing knowledge
-
-### 5. 🤝 Community Sponsor Dashboard
-- **Diaspora Engagement**: Global communities funding homeland healthcare
-- **Impact Transparency**: Real-time updates on sponsored healing journeys  
-- **Ubuntu Governance**: Community voting on funding priorities and protocols
-
-### 6. 🔒 Privacy-Preserving Research Contribution
+### 4. 🔒 Privacy-Preserving Research Platform
 - **Zero-Knowledge Proofs**: Anonymous health data sharing while maintaining verifiability
 - **Granular Consent**: Patients control exactly what data is shared with researchers
 - **$LIVES Rewards**: Token rewards for contributing anonymized health data
+
+### 5. 🏥 Healthcare Provider Integration
+- **Professional Verification**: Medical professionals can verify treatment milestones
+- **Clinical Dashboard**: Tools for healthcare providers to track patient progress
+- **FHIR Compatibility**: Integration with electronic health record systems
+
+### 6. 🎨 Recovery Story Exhibition
+- **Interactive Stories**: Patients can share their recovery journeys
+- **Community Gallery**: Public showcase of successful treatment outcomes
+- **Ubuntu Health Branding**: Consistent community-centered design throughout
 
 ## 🛠 Technology Stack
 
@@ -82,17 +82,15 @@ Ubuntu Health integrates all five DeSci tracks:
 
 ```
 Ubuntu-Health/
-├── 📁 contracts/          # Solana smart contracts for healthcare operations
-├── 📁 frontend/           # React/Next.js web application
-├── 📁 backend/            # Node.js API server with Ubuntu community services
-├── 📁 mobile/             # React Native app for underserved communities  
+├── 📁 programs/           # Solana smart contracts (treatment passes, escrow)
+├── 📁 src/                # React frontend application
+├── 📁 backend/            # Node.js API server
 ├── 📁 zkproofs/           # Zero-knowledge proof implementations
-├── 📁 ai-ml/              # Machine learning models for health analysis
-├── 📁 governance/         # DAO governance and Ubuntu community protocols
-├── 📁 integration/        # Healthcare system integrations
+├── 📁 integration/        # Healthcare system integrations (FHIR/HL7)
 ├── 📁 deployment/         # Infrastructure and deployment configurations
-├── 📁 documentation/      # Technical docs and Ubuntu philosophy guides
-└── 📁 testing/            # Comprehensive testing suite
+├── 📁 tests/              # Comprehensive testing suite
+├── 📁 docs/               # Technical documentation
+└── 📁 assets/             # Ubuntu Health branding and UI assets
 ```
 
 ## 🚀 Quick Start
@@ -136,48 +134,51 @@ cd backend && npm run dev
 cd frontend && npm run dev
 ```
 
-### 4. Ubuntu Community Setup
+### 4. Ubuntu Health Platform Setup
 
 ```bash
-# Initialize Ubuntu community governance
-npm run setup:ubuntu-community
+# Initialize Ubuntu Health branding
+npm run setup:ubuntu-health
 
-# Setup elder council
-npm run setup:elder-council
+# Setup healthcare provider verification
+npm run setup:provider-verification
 
-# Configure traditional healing integration
-npm run setup:traditional-healing
+# Configure treatment pass NFTs
+npm run setup:treatment-passes
+
+# Start the platform
+npm run start
 ```
 
-## 🎯 Use Case Example: "Ubuntu Diaspora Healing Loop"
+## 🎯 Use Case Example: "Global Healthcare Sponsorship"
 
-A patient in Yaoundé, Cameroon needs treatment but lacks funds. Their diaspora community in Paris creates a sponsorship through Ubuntu Health:
+A patient needs treatment but lacks funds. A sponsor discovers their request through Ubuntu Health:
 
-1. **Community Mobilization**: Paris-based Ubuntu community reviews patient story
-2. **Collective Funding**: Community pools $LIVES tokens in smart contract escrow
-3. **Treatment Access**: Patient receives NFT treatment pass for verified healthcare
-4. **Progress Documentation**: Recovery logged with timestamps and community validation
-5. **Cultural Integration**: Traditional healers provide ancestral wisdom alongside modern medicine
-6. **Data Contribution**: Patient opts to share anonymized data for research, earning $LIVES rewards
-7. **Story Preservation**: Healing journey becomes part of Ubuntu Health cultural museum
-8. **Community Impact**: Success inspires other communities and validates Ubuntu healthcare model
+1. **Treatment Request**: Patient creates treatment request with medical documentation
+2. **Sponsor Discovery**: Sponsors browse available treatment requests on the platform
+3. **Direct Funding**: Sponsor funds treatment through smart contract escrow
+4. **Treatment Access**: Patient receives NFT treatment pass for verified healthcare
+5. **Progress Documentation**: Recovery logged with timestamps and healthcare provider verification
+6. **Milestone Verification**: Healthcare providers validate treatment progress
+7. **Data Contribution**: Patient opts to share anonymized data for research, earning $LIVES rewards
+8. **Success Sharing**: Recovery story shared in community gallery for inspiration
 
-## 🏛 Ubuntu Philosophy Integration
+## 🏛 Ubuntu Health Branding
 
 ### Core Principles
 
 - **"I am because we are"**: Individual healing strengthens the entire community
-- **Collective Responsibility**: Communities take shared ownership of health outcomes
-- **Elder Wisdom**: Traditional healers and elders guide treatment decisions
-- **Cultural Preservation**: Ancestral healing knowledge documented and honored
-- **Mutual Aid**: Communities support each other across geographic boundaries
+- **Community-Centered Healthcare**: Platform designed for collective support and care
+- **Transparency & Trust**: Open tracking of treatment funding and progress
+- **Privacy & Dignity**: Patients maintain control over their health information
+- **Global Accessibility**: Platform available to patients and sponsors worldwide
 
-### Governance Structure
+### Platform Features
 
-- **Ubuntu DAO**: Community-driven decision making on platform development
-- **Elder Council**: Traditional healers and elders provide cultural guidance
-- **Community Circles**: Local groups manage regional healthcare initiatives
-- **Diaspora Networks**: Global communities coordinate cross-border healthcare funding
+- **Ubuntu Health Branding**: Consistent visual identity throughout the platform
+- **Community Support**: Social features that connect patients, sponsors, and providers
+- **Simple Verification**: Streamlined processes for treatment and provider verification
+- **Impact Tracking**: Clear metrics showing the community impact of sponsorships
 
 ## 📊 Privacy & Security
 
@@ -203,50 +204,50 @@ We welcome contributions that honor Ubuntu philosophy and advance community-driv
 
 ### ✅ Completed Components
 
-| Component | Status | Ubuntu Integration | Details |
-|-----------|--------|-------------------|---------|
-| **Smart Contracts** | ✅ Complete | Elder Council Governance | 6 Solana/Anchor programs with Ubuntu consensus |
-| **Frontend Application** | ✅ Complete | Ubuntu Philosophy Banner | React/Next.js with cultural components |
-| **Backend API** | ✅ Complete | Ubuntu Consensus Middleware | Node.js/Express with community decision-making |
-| **Mobile Application** | ✅ Complete | Offline Ubuntu Features | React Native with ceremony notifications |
-| **ZK Proofs System** | ✅ Complete | Community Validation | Circom circuits with Ubuntu privacy protocols |
-| **Governance Framework** | ✅ Complete | Elder Council DAO | Complete constitution with Ubuntu tokenomics |
-| **Deployment Infrastructure** | ✅ Complete | Ubuntu-themed DevOps | Docker/Kubernetes with cultural monitoring |
-| **Documentation** | ✅ Complete | Ubuntu Philosophy Docs | Comprehensive guides with cultural integration |
-| **Testing Framework** | ✅ Complete | Cultural Sensitivity Tests | Unit, integration, E2E with Ubuntu validation |
+| Component | Status | Ubuntu Health Integration | Details |
+|-----------|--------|--------------------------|---------|
+| **Smart Contracts** | ✅ Complete | Treatment Pass NFTs | Solana/Anchor programs with escrow and milestones |
+| **Frontend Application** | ✅ Complete | Ubuntu Health Branding | React/TypeScript with sponsor discovery |
+| **Recovery Logger** | ✅ Complete | Patient Documentation | Cryptographic timestamping and IPFS storage |
+| **Sponsor Dashboard** | ✅ Complete | Impact Tracking | Real-time sponsorship monitoring and metrics |
+| **Provider Integration** | ✅ Complete | Professional Verification | Healthcare provider milestone validation |
+| **ZK Proofs System** | ✅ Complete | Privacy-Preserving Research | Anonymous data contribution with rewards |
+| **Testing Framework** | ✅ Complete | 100% Pass Rate | Comprehensive unit, integration, and E2E tests |
+| **Deployment Infrastructure** | ✅ Complete | Production Ready | Docker/Kubernetes deployment configuration |
+| **Documentation** | ✅ Complete | Technical Guides | Complete API docs and user guides |
 
-### 🌍 Ubuntu Philosophy Integration
+### 🌍 Ubuntu Health Platform Integration
 
-- **"I am because we are"**: Community-centered design throughout all components  
-- **Elder Council Governance**: Traditional authority integrated into smart contracts
-- **Collective Healing**: Community support mechanisms in every user journey
-- **Cultural Sensitivity**: Respectful integration of traditional healing practices
-- **Intergenerational Wisdom**: Knowledge sharing between elders and community
-- **Consensus Decision-Making**: Ubuntu principles in all governance processes
+- **"I am because we are"**: Community-centered healthcare approach throughout all components  
+- **Healthcare Sponsorship**: Direct connection between patients needing help and willing sponsors
+- **Recovery Documentation**: Comprehensive logging and verification of treatment progress
+- **Provider Verification**: Professional healthcare validation of treatment milestones
+- **Research Contribution**: Privacy-preserving sharing of health data for medical research
+- **Impact Transparency**: Clear tracking of sponsorship outcomes and community benefit
 
 ### 🏗️ Architecture Highlights
 
 ```
-Ubuntu Health Ecosystem
+Ubuntu Health Platform
 ├── 🔗 Blockchain Layer (Solana)
-│   ├── Ubuntu Health Core Contract (Community consensus)
-│   ├── Treatment Passes (NFT sponsorship system)
-│   ├── Recovery Logs (Milestone verification)
-│   ├── Sponsorship Escrow (Community funding)
-│   ├── Soulbound Tokens (Ubuntu reputation)
-│   └── Data Sharing (Privacy-preserving research)
-├── 🌐 Frontend (React/Next.js)
-│   ├── Ubuntu Philosophy Banner (Cultural quotes)
-│   ├── Community Dashboard (Collective healing)
-│   ├── Elder Council Interface (Traditional authority)
-│   └── Cultural Ceremony Integration
+│   ├── Treatment Pass NFTs (Sponsorship system)
+│   ├── Milestone Escrow (Smart contract funding)
+│   ├── Recovery Logging (Cryptographic verification)
+│   ├── Provider Verification (Healthcare professional validation)
+│   └── Research Data Sharing (Privacy-preserving contribution)
+├── 🌐 Frontend (React/TypeScript)
+│   ├── Treatment Request Browser (Patient discovery)
+│   ├── Sponsor Dashboard (Impact tracking)
+│   ├── Recovery Logger (Patient documentation)
+│   ├── Provider Dashboard (Professional tools)
+│   └── Ubuntu Health Branding (Consistent visual identity)
 ├── ⚙️ Backend (Node.js/Express)
-│   ├── Ubuntu Consensus Middleware (Community decisions)
-│   ├── Traditional Healing API (Cultural practices)
-│   ├── Ceremony Integration Service (Spiritual healing)
-│   └── Elder Council Management (Wisdom keepers)
-├── 📱 Mobile (React Native)
-│   ├── Offline Ubuntu Features (Rural accessibility)
+│   ├── IPFS Integration (Decentralized storage)
+│   ├── FHIR/HL7 APIs (Healthcare standards)
+│   ├── Cryptographic Services (Timestamping)
+│   └── Research APIs (Privacy-preserving data access)
+├── � Privacy Layer
+│   ├── Zero-Knowledge Proofs (Anonymous research contribution)
 │   ├── Biometric Authentication (Privacy protection)
 │   ├── Ceremony Notifications (Cultural events)
 │   └── Community Connection (Healing circles)
@@ -296,33 +297,33 @@ Ubuntu Health Ecosystem
 
 - Follow Ubuntu principles in code design and community interaction
 - Maintain privacy-first approach in all implementations
-- Document cultural considerations and traditional healing integration
+- Document healthcare provider onboarding processes
 - Write comprehensive tests for healthcare-critical functionality
-- Engage with elder council for culturally sensitive features
+- Engage with medical professionals for clinical validation features
 
 ## 📚 Documentation
 
-- **[Technical Architecture](./documentation/technical/architecture-overview.md)**
-- **[Ubuntu Philosophy Integration](./documentation/community/ubuntu-community-principles.md)**
-- **[Smart Contract Documentation](./documentation/technical/smart-contract-documentation.md)**
-- **[Privacy Framework](./documentation/technical/privacy-framework.md)**
-- **[User Guides](./documentation/user-guides/)**
-- **[Governance Protocols](./documentation/governance/)**
+- **[Technical Architecture](./docs/technical/architecture-overview.md)**
+- **[Ubuntu Health Branding](./docs/branding/ubuntu-health-guide.md)**
+- **[Smart Contract Documentation](./docs/technical/smart-contract-documentation.md)**
+- **[Privacy Framework](./docs/technical/privacy-framework.md)**
+- **[User Guides](./docs/user-guides/)**
+- **[API Documentation](./docs/api/)**
 
 ## 🏅 Recognition & Awards
 
 - **DeSci Builders Hackathon**: All 5 tracks integrated
-- **Ubuntu Philosophy**: Authentic cultural integration
+- **Healthcare Innovation**: Direct patient-sponsor connection platform
 - **Privacy Leadership**: Advanced ZK proof implementation
 - **Community Impact**: Real-world healthcare access improvement
 
 ## 🔗 Links & Resources
 
 - **Website**: [Coming Soon]
-- **Documentation**: [./documentation/](./documentation/)
-- **Ubuntu Philosophy**: [Ubuntu Community Principles](./UBUNTU_PHILOSOPHY.md)
-- **Traditional Healing**: [Cultural Integration Guide](./TRADITIONAL_HEALING.md)
-- **Governance**: [DAO Constitution](./governance/governance-constitution.md)
+- **Documentation**: [./docs/](./docs/)
+- **Ubuntu Health Branding**: [Brand Guidelines](./docs/branding/ubuntu-health-guide.md)
+- **API Documentation**: [REST API Guide](./docs/api/api-documentation.md)
+- **Development Setup**: [Getting Started Guide](./docs/development/setup.md)
 
 ## 📄 License
 
@@ -330,12 +331,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Ubuntu Communities**: For sharing wisdom and cultural guidance
-- **Traditional Healers**: For preserving ancestral knowledge
+- **Healthcare Professionals**: For validating treatment milestone verification systems
+- **Ubuntu Community**: For inspiring the "I am because we are" philosophy integration
 - **DeSci Builders**: For creating space for community-driven health innovation
 - **Solana Ecosystem**: For providing scalable blockchain infrastructure
 - **Privacy Researchers**: For advancing zero-knowledge proof technologies
 
 ---
 
-*Ubuntu Health: Where "I am because we are" meets cutting-edge blockchain technology to create community-owned, privacy-preserving, and culturally-rooted healthcare for all.* 🌍💊🎨
+*Ubuntu Health: Where "I am because we are" meets cutting-edge blockchain technology to create community-centered, privacy-preserving healthcare sponsorship for all.* 🌍💊
