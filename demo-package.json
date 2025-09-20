@@ -1,0 +1,34 @@
+{
+  "name": "ubuntu-health-demo",
+  "version": "1.0.0",
+  "description": "Ubuntu Health - Hackathon Demo Simulation",
+  "main": "demo-script.js",
+  "scripts": {
+    "demo": "node demo-script.js",
+    "demo:web": "start hackathon-demo.html",
+    "demo:browser": "start hackathon-demo.html",
+    "serve": "npx http-server . -p 3000 -o hackathon-demo.html"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "readline": "^1.3.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "keywords": [
+    "ubuntu-health",
+    "hackathon",
+    "demo",
+    "healthcare",
+    "blockchain",
+    "traditional-healing",
+    "network-state"
+  ],
+  "author": "Ubuntu Health Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daghondi/Ubuntu-Health---DeSci-Builders-Hackathon-Project.git"
+  }
+}

@@ -1,0 +1,54 @@
+[workspace]
+members = [
+    "treatment_sponsorship",
+    "data_contribution_rewards", 
+    "governance"
+]
+
+[workspace.package]
+name = "ubuntu-health-smart-contracts"
+version = "0.1.0"
+description = "Ubuntu Health - Advanced Medical Treatment Sponsorship Smart Contracts"
+authors = ["Ubuntu Health Team"]
+repository = "https://github.com/daghondi/Ubuntu-Health---DeSci-Builders-Hackathon-Project"
+license = "MIT"
+edition = "2021"
+
+[workspace.dependencies]
+anchor-lang = "0.29.0"
+anchor-spl = "0.29.0"
+
+# Ubuntu Health Smart Contracts Package
+# 
+# This workspace contains three main smart contracts for the Ubuntu Health platform:
+#
+# 1. treatment_sponsorship.rs - Core treatment funding and milestone-based escrow
+# 2. data_contribution_rewards.rs - Privacy-preserving research data sharing with rewards
+# 3. governance.rs - Decentralized governance for platform decisions
+#
+# Built on Solana blockchain using Anchor framework
+# Designed for CAR-T therapy, gene therapy, and advanced medical treatment sponsorship
+#
+# Features:
+# - NFT Treatment Passes for high-cost therapies ($400K+ treatments)
+# - Milestone-based escrow with medical professional verification
+# - $LIVES token economics for sponsorship, governance, and research rewards
+# - Zero-knowledge proof data contribution system
+# - Decentralized governance with proposal creation and voting
+# - Privacy-preserving clinical outcome data sharing
+# - Research institution verification and reward system
+# - Community-driven treatment protocol governance
+#
+# DeSci Integration:
+# - Tokenized Patient Access (Primary track)
+# - Verification & Audit Trails for medical milestones
+# - Data Protocols for Longevity & Health research
+# - Global Access & Inclusion through decentralized funding
+# - Open Science Infrastructure with transparent outcomes
+#
+# Network State Relevance:
+# - Decentralized medical treatment infrastructure
+# - Community-governed healthcare funding without state intermediaries  
+# - Cross-border treatment coordination and verification
+# - Crypto-native health insurance alternatives
+# - Global treatment passport for advanced medical procedures

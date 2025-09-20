@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubuntu Health - Hackathon Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffccbc 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #ff6f00 0%, #ff8f00 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .demo-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .demo-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .act-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .act-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .act-button.active {
+            background: #ff6f00;
+            color: white;
+        }
+        
+        .act-button.completed {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .act-button.inactive {
+            background: #e0e0e0;
+            color: #666;
+        }
+        
+        .act-content {
+            padding: 40px;
+            min-height: 600px;
+        }
+        
+        .act-title {
+            font-size: 2rem;
+            color: #ff6f00;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .patient-profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #fff3e0;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .patient-avatar {
+            font-size: 4rem;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ff8f00;
+            border-radius: 50%;
+        }
+        
+        .patient-info h3 {
+            font-size: 1.5rem;
+            color: #ff6f00;
+            margin-bottom: 5px;
+        }
+        
+        .patient-info p {
+            margin-bottom: 3px;
+            color: #666;
+        }
+        
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .sponsor-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff8f00;
+        }
+        
+        .sponsor-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .sponsor-avatar {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .milestone {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .milestone.completed {
+            border-color: #4caf50;
+            background: #f1f8e9;
+        }
+        
+        .milestone-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .milestone-icon {
+            font-size: 1.5rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffccbc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6f00;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .control-button {
+            padding: 15px 25px;
+            background: #ff6f00;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .control-button:hover {
+            background: #ff8f00;
+            transform: translateY(-2px);
+        }
+        
+        .control-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .network-stats {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .typing-effect {
+            animation: typing 0.5s steps(40, end);
+        }
+        
+        @keyframes typing {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <div class="demo-title">🌍 Ubuntu Health Demo</div>
+            <div class="demo-subtitle">"I am because we are" - The First Healthcare Network State</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
+        
+        <div class="act-navigation" id="actNavigation">
+            <!-- Navigation buttons will be populated by JavaScript -->
+        </div>
+        
+        <div class="act-content" id="actContent">
+            <!-- Act content will be populated by JavaScript -->
+        </div>
+    </div>
+    
+    <div class="network-stats">
+        <h4 style="color: #ff6f00; margin-bottom: 15px;">🌍 Ubuntu Health Network</h4>
+        <div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="stat-card" style="padding: 15px;">
+                <div class="stat-number" style="font-size: 1.5rem;" id="totalPatients">847</div>
+                <div class="stat-label">Patients</div>
+            </div>
+            <div class="stat-card" style="padding: 15px;">
+                <div class="stat-number" style="font-size: 1.5rem;" id="totalSponsors">1,205</div>
+                <div class="stat-label">Sponsors</div>
+            </div>
+            <div class="stat-card" style="padding: 15px;">
+                <div class="stat-number" style="font-size: 1.5rem;" id="totalHealers">203</div>
+                <div class="stat-label">Healers</div>
+            </div>
+            <div class="stat-card" style="padding: 15px;">
+                <div class="stat-number" style="font-size: 1.5rem;" id="countriesActive">43</div>
+                <div class="stat-label">Countries</div>
+            </div>
+        </div>
+        <div class="stat-card" style="margin-top: 10px; padding: 15px;">
+            <div class="stat-number" style="font-size: 1.5rem;" id="fundsRaised">$2.45M</div>
+            <div class="stat-label">Total Funds Raised</div>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button class="control-button" id="nextButton" onclick="nextAct()">Next Act →</button>
+        <button class="control-button" onclick="simulateGlobalImpact()">🌍 Show Impact</button>
+    </div>
+
+    <script>
+        // Demo data and state
+        let currentAct = 0;
+        const totalActs = 6;
+        
+        const acts = [
+            {
+                title: 'The Challenge',
+                subtitle: 'Traditional meets modern healthcare gaps',
+                content: generateAct1Content
+            },
+            {
+                title: 'Creating Journey',
+                subtitle: 'Community-powered healthcare discovery',
+                content: generateAct2Content
+            },
+            {
+                title: 'Global Sponsorship',
+                subtitle: 'The world becomes your community',
+                content: generateAct3Content
+            },
+            {
+                title: 'Milestone Progress',
+                subtitle: 'Trust through transparency',
+                content: generateAct4Content
+            },
+            {
+                title: 'Research Impact',
+                subtitle: 'Healing knowledge for the world',
+                content: generateAct5Content
+            },
+            {
+                title: 'Ubuntu Transformation',
+                subtitle: 'Healthcare Network State revolution',
+                content: generateAct6Content
+            }
+        ];
+        
+        const demoData = {
+            patient: {
+                name: 'Amara Wanjiku',
+                location: 'Nairobi, Kenya',
+                condition: 'Complex Cardiac Surgery Required',
+                traditionalHealer: 'Elder Wanjiku',
+                sponsorshipGoal: 25000,
+                sponsorshipRaised: 18750
+            },
+            sponsors: [
+                {
+                    name: 'Dr. Sarah Mitchell',
+                    location: 'Toronto, Canada',
+                    level: 'Gold',
+                    contributed: 15000,
+                    interest: 'Traditional-Modern Integration Research',
+                    avatar: '👩‍⚕️'
+                },
+                {
+                    name: 'James Weber',
+                    location: 'Berlin, Germany',
+                    level: 'Silver',
+                    contributed: 8500,
+                    interest: 'Community-Powered Healthcare Innovation',
+                    avatar: '👨‍💼'
+                },
+                {
+                    name: 'Maria Santos',
+                    location: 'São Paulo, Brazil',
+                    level: 'Platinum',
+                    contributed: 32000,
+                    interest: 'Traditional Healing Knowledge Preservation',
+                    avatar: '👩‍🌾'
+                }
+            ],
+            milestones: [
+                {
+                    title: 'Traditional Consultation',
+                    description: 'Elder Wanjiku consultation and traditional healing assessment',
+                    completed: true,
+                    fundsReleased: 2500,
+                    witnesses: 12,
+                    traditionalElement: 'Herbal preparation guidance'
+                },
+                {
+                    title: 'Medical Evaluation',
+                    description: 'Comprehensive medical evaluation and treatment planning',
+                    completed: true,
+                    fundsReleased: 5000,
+                    witnesses: 8,
+                    traditionalElement: 'Integration with modern diagnostics'
+                },
+                {
+                    title: 'Surgery & Recovery',
+                    description: 'Surgical intervention with traditional healing support',
+                    completed: true,
+                    fundsReleased: 15000,
+                    witnesses: 15,
+                    traditionalElement: 'Post-surgery traditional recovery methods'
+                },
+                {
+                    title: 'Community Reintegration',
+                    description: 'Full recovery and community healing celebration',
+                    completed: false,
+                    fundsReleased: 0,
+                    witnesses: 0,
+                    traditionalElement: 'Community healing ceremony'
+                }
+            ]
+        };
+        
+        // Initialize demo
+        function initDemo() {
+            generateNavigation();
+            showAct(0);
+        }
+        
+        function generateNavigation() {
+            const nav = document.getElementById('actNavigation');
+            nav.innerHTML = acts.map((act, index) => 
+                `<button class="act-button ${index === currentAct ? 'active' : index < currentAct ? 'completed' : 'inactive'}" 
+                         onclick="showAct(${index})">
+                    Act ${index + 1}: ${act.title}
+                </button>`
+            ).join('');
+        }
+        
+        function showAct(actIndex) {
+            currentAct = actIndex;
+            updateProgress();
+            generateNavigation();
+            
+            const content = document.getElementById('actContent');
+            content.innerHTML = acts[actIndex].content();
+            content.classList.add('fade-in');
+            
+            // Update next button
+            const nextButton = document.getElementById('nextButton');
+            nextButton.disabled = currentAct >= totalActs - 1;
+        }
+        
+        function nextAct() {
+            if (currentAct < totalActs - 1) {
+                showAct(currentAct + 1);
+            }
+        }
+        
+        function updateProgress() {
+            const progress = (currentAct / (totalActs - 1)) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+        
+        function simulateGlobalImpact() {
+            // Animate network stats
+            animateNumber('totalPatients', 847, 872);
+            animateNumber('totalSponsors', 1205, 1242);
+            animateNumber('totalHealers', 203, 205);
+            animateNumber('countriesActive', 43, 45);
+            animateNumberWithPrefix('fundsRaised', 2.45, 2.58, '$', 'M');
+        }
+        
+        function animateNumber(id, from, to) {
+            const element = document.getElementById(id);
+            const duration = 1000;
+            const steps = 30;
+            const increment = (to - from) / steps;
+            let current = from;
+            let step = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = Math.round(current).toLocaleString();
+                step++;
+                
+                if (step >= steps) {
+                    clearInterval(timer);
+                    element.textContent = to.toLocaleString();
+                }
+            }, duration / steps);
+        }
+        
+        function animateNumberWithPrefix(id, from, to, prefix, suffix) {
+            const element = document.getElementById(id);
+            const duration = 1000;
+            const steps = 30;
+            const increment = (to - from) / steps;
+            let current = from;
+            let step = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = prefix + current.toFixed(2) + suffix;
+                step++;
+                
+                if (step >= steps) {
+                    clearInterval(timer);
+                    element.textContent = prefix + to.toFixed(2) + suffix;
+                }
+            }, duration / steps);
+        }
+        
+        // Act content generators
+        function generateAct1Content() {
+            return `
+                <div class="act-title">💔 THE CHALLENGE: When Traditional Meets Modern Healthcare Gaps</div>
+                <div class="patient-profile">
+                    <div class="patient-avatar">👩🏾</div>
+                    <div class="patient-info">
+                        <h3>${demoData.patient.name}</h3>
+                        <p><strong>📍 Location:</strong> ${demoData.patient.location}</p>
+                        <p><strong>🏥 Condition:</strong> ${demoData.patient.condition}</p>
+                        <p><strong>🌿 Traditional Healer:</strong> ${demoData.patient.traditionalHealer}</p>
+                        <p><strong>🎯 Funding Goal:</strong> $${demoData.patient.sponsorshipGoal.toLocaleString()}</p>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+                    <h3 style="color: #d32f2f; margin-bottom: 15px;">💭 The Problem</h3>
+                    <p style="margin-bottom: 10px;">Amara needs specialized cardiac surgery costing $25,000. Traditional healthcare systems offer limited options:</p>
+                    <ul style="margin-left: 20px; color: #666;">
+                        <li>Expensive private care she cannot afford</li>
+                        <li>Public systems with dangerous waiting times</li>
+                        <li>Loss of cultural healing wisdom in the process</li>
+                    </ul>
+                </div>
+                <div style="background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%); padding: 30px; border-radius: 15px;">
+                    <h3 style="color: #2e7d32; margin-bottom: 15px;">🌟 Ubuntu Health Solution</h3>
+                    <p style="margin-bottom: 15px;"><strong>"I am because we are"</strong> - What if the global community could sponsor her healing while respecting and preserving her cultural wisdom?</p>
+                    <p>Ubuntu Health creates the world's first Healthcare Network State where traditional healing wisdom meets blockchain innovation.</p>
+                </div>
+            `;
+        }
+        
+        function generateAct2Content() {
+            return `
+                <div class="act-title">🌱 CREATING THE HEALING JOURNEY: Community-Powered Healthcare Discovery</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: #fff3e0; padding: 25px; border-radius: 15px;">
+                        <h3 style="color: #ff8f00; margin-bottom: 15px;">🔄 Step 1: Traditional Consultation</h3>
+                        <p style="margin-bottom: 10px;"><strong>👵 Elder Wanjiku</strong> - 40 years of Kikuyu healing wisdom</p>
+                        <p style="margin-bottom: 10px;">🌿 Sacred knowledge documented with cultural respect</p>
+                        <p>🔒 Advanced encryption protects traditional wisdom</p>
+                    </div>
+                    <div style="background: #e3f2fd; padding: 25px; border-radius: 15px;">
+                        <h3 style="color: #1976d2; margin-bottom: 15px;">🔄 Step 2: Cultural Protocol Compliance</h3>
+                        <p style="margin-bottom: 10px;">✅ Automated respect for cultural protocols</p>
+                        <p style="margin-bottom: 10px;">✅ Elder Council approval workflows</p>
+                        <p>✅ Traditional authority recognition</p>
+                    </div>
+                    <div style="background: #e8f5e8; padding: 25px; border-radius: 15px;">
+                        <h3 style="color: #2e7d32; margin-bottom: 15px;">🔄 Step 3: Medical Integration</h3>
+                        <p style="margin-bottom: 10px;">🏥 FHIR/HL7 compatibility with modern healthcare</p>
+                        <p style="margin-bottom: 10px;">🔗 Seamless EHR integration</p>
+                        <p>💊 Traditional healing + modern medicine harmony</p>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-top: 30px;">
+                    <h3 style="margin-bottom: 10px;">🎯 Journey Created Successfully!</h3>
+                    <p>Goal: $${demoData.patient.sponsorshipGoal.toLocaleString()} • Traditional knowledge protected • Global community ready</p>
+                </div>
+            `;
+        }
+        
+        function generateAct3Content() {
+            return `
+                <div class="act-title">🌍 GLOBAL SPONSORSHIP DISCOVERY: The World Becomes Your Community</div>
+                <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 25px; border-radius: 15px; margin-bottom: 30px; text-align: center;">
+                    <h3 style="color: #1976d2; margin-bottom: 10px;">🔍 AI-Powered Sponsor Matching Active...</h3>
+                    <p>Ubuntu Health's advanced algorithms match sponsors based on cultural compatibility, interests, and community impact goals</p>
+                </div>
+                <div class="sponsors-grid">
+                    ${demoData.sponsors.map((sponsor, index) => `
+                        <div class="sponsor-card">
+                            <div class="sponsor-header">
+                                <div class="sponsor-avatar">${sponsor.avatar}</div>
+                                <div>
+                                    <h4>${sponsor.name}</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">${sponsor.location}</p>
+                                </div>
+                            </div>
+                            <div style="background: ${sponsor.level === 'Platinum' ? 'linear-gradient(135deg, #9c27b0, #ba68c8)' : sponsor.level === 'Gold' ? 'linear-gradient(135deg, #ff8f00, #ffb74d)' : 'linear-gradient(135deg, #757575, #90a4ae)'}; color: white; padding: 8px 15px; border-radius: 20px; display: inline-block; margin-bottom: 15px; font-weight: bold;">
+                                ${sponsor.level} Sponsor
+                            </div>
+                            <p style="margin-bottom: 10px; color: #666; font-size: 0.9rem;">${sponsor.interest}</p>
+                            <div style="margin-bottom: 10px;">
+                                <strong>💰 $${sponsor.contributed.toLocaleString()} contributed</strong>
+                            </div>
+                            <div style="background: #4caf50; color: white; padding: 8px 15px; border-radius: 20px; text-align: center; font-weight: bold;">
+                                ✅ MATCHED! Cultural compatibility confirmed
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div style="background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%); color: white; padding: 30px; border-radius: 15px; text-align: center; margin-top: 30px;">
+                    <h3 style="margin-bottom: 15px;">🚀 Smart Contract Escrow Deployed!</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div>📝 Milestone conditions programmed</div>
+                        <div>🔒 Funds secured in escrow</div>
+                        <div>👥 Community witness verification enabled</div>
+                    </div>
+                    <div style="margin-top: 20px; font-size: 1.2rem;">
+                        <strong>💰 Total Raised: $${demoData.patient.sponsorshipRaised.toLocaleString()} / $${demoData.patient.sponsorshipGoal.toLocaleString()}</strong>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateAct4Content() {
+            return `
+                <div class="act-title">🎯 MILESTONE-BASED PROGRESS: Trust Through Transparency</div>
+                <div style="margin-bottom: 30px;">
+                    ${demoData.milestones.map((milestone, index) => `
+                        <div class="milestone ${milestone.completed ? 'completed' : ''}">
+                            <div class="milestone-header">
+                                <div class="milestone-icon">${milestone.completed ? '✅' : '⏳'}</div>
+                                <h3>${milestone.title}</h3>
+                                ${milestone.completed ? `<div style="background: #4caf50; color: white; padding: 5px 15px; border-radius: 15px; margin-left: auto; font-size: 0.9rem;">$${milestone.fundsReleased.toLocaleString()} Released</div>` : ''}
+                            </div>
+                            <p style="margin-bottom: 15px; color: #666;">${milestone.description}</p>
+                            <div style="display: flex; align-items: center; gap: 20px; font-size: 0.9rem;">
+                                <span style="display: flex; align-items: center; gap: 5px;">
+                                    👥 ${milestone.witnesses} Community Witnesses
+                                </span>
+                                <span style="color: #ff8f00; font-weight: bold;">
+                                    🌿 ${milestone.traditionalElement}
+                                </span>
+                            </div>
+                            ${milestone.completed ? `
+                                <div style="background: #4caf50; color: white; padding: 10px; border-radius: 10px; margin-top: 15px; text-align: center; font-weight: bold;">
+                                    ✅ Verified by community consensus
+                                </div>
+                            ` : `
+                                <div style="background: #fff3e0; color: #ff8f00; padding: 10px; border-radius: 10px; margin-top: 15px; text-align: center; font-weight: bold; cursor: pointer;" onclick="simulateMilestoneCompletion(${index})">
+                                    🎬 Click to simulate milestone completion
+                                </div>
+                            `}
+                        </div>
+                    `).join('')}
+                </div>
+                <div style="background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%); padding: 30px; border-radius: 15px; text-align: center;">
+                    <h3 style="color: #2e7d32; margin-bottom: 10px;">🏆 Milestone System Benefits</h3>
+                    <p>Transparent progress tracking • Community witness verification • Automatic fund releases • Cultural integration at every step</p>
+                </div>
+            `;
+        }
+        
+        function generateAct5Content() {
+            return `
+                <div class="act-title">🔬 RESEARCH CONTRIBUTION: Healing Knowledge That Heals the World</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <div style="background: #e3f2fd; padding: 25px; border-radius: 15px;">
+                        <h3 style="color: #1976d2; margin-bottom: 15px;">🧬 Zero-Knowledge Research</h3>
+                        <p style="margin-bottom: 10px;">🔒 Privacy-preserving data analysis</p>
+                        <p style="margin-bottom: 10px;">🌍 Global medical research enhancement</p>
+                        <p>💰 Fair compensation for traditional knowledge</p>
+                    </div>
+                    <div style="background: #e8f5e8; padding: 25px; border-radius: 15px;">
+                        <h3 style="color: #2e7d32; margin-bottom: 15px;">📊 Research Impact</h3>
+                        <p style="margin-bottom: 10px;">📚 Studies Enhanced: 156</p>
+                        <p style="margin-bottom: 10px;">👥 Healers Compensated: 203</p>
+                        <p>🌍 Global Cases Helped: 47 similar conditions</p>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffccbc 100%); padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+                    <h3 style="color: #ff8f00; margin-bottom: 15px;">💡 Traditional Knowledge Value Creation</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div>💰 Elder Wanjiku earnings: <strong>$2,400 this month</strong></div>
+                        <div>🏘️ Community benefit fund: <strong>$8,500 contributed</strong></div>
+                        <div>📈 Knowledge preservation: <strong>156 healing methods documented</strong></div>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%); color: white; padding: 30px; border-radius: 15px; text-align: center;">
+                    <h3 style="margin-bottom: 15px;">🌟 Ubuntu Philosophy in Action</h3>
+                    <p style="font-size: 1.1rem; font-style: italic;">"When traditional knowledge helps heal the world, the world pays it forward."</p>
+                    <p style="margin-top: 15px;">Global healing knowledge advancement • Community empowerment • Fair compensation • Cultural preservation</p>
+                </div>
+            `;
+        }
+        
+        function generateAct6Content() {
+            return `
+                <div class="act-title">🏆 UBUNTU HEALTH TRANSFORMATION: Building the First Healthcare Network State</div>
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h3 style="color: #ff8f00; margin-bottom: 15px;">📈 Six Months Later - Global Impact Visualization</h3>
+                    <p style="font-size: 1.1rem; color: #666;">Amara is fully recovered, but her impact continues...</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); padding: 25px; border-radius: 15px;">
+                        <h3 style="color: #d32f2f; margin-bottom: 15px;">🎯 Amara's Success Story</h3>
+                        <p style="margin-bottom: 8px;">❤️ Fully recovered and healthy</p>
+                        <p style="margin-bottom: 8px;">👥 Now a community witness for 12 other journeys</p>
+                        <p>🌍 Her story inspired 47 similar healing journeys</p>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%); padding: 25px; border-radius: 15px;">
+                        <h3 style="color: #2e7d32; margin-bottom: 15px;">🌿 Elder Wanjiku's Impact</h3>
+                        <p style="margin-bottom: 8px;">💰 $15,600 earned from knowledge sharing</p>
+                        <p style="margin-bottom: 8px;">🌍 Healing wisdom helped 47 people globally</p>
+                        <p>📚 Traditional methods in global research database</p>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">312</div>
+                        <div class="stat-label">Successful Healing Journeys</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$2.45M</div>
+                        <div class="stat-label">Community Funds Raised</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">43</div>
+                        <div class="stat-label">Countries in Network</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">Traditional Knowledge Preserved</div>
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #ff6f00 0%, #ff8f00 100%); color: white; padding: 40px; border-radius: 15px; text-align: center; margin-top: 30px;">
+                    <h3 style="margin-bottom: 20px; font-size: 1.8rem;">🏆 The First Healthcare Network State is Born</h3>
+                    <p style="margin-bottom: 20px; font-size: 1.1rem;">Ubuntu Health has proven that when technology serves community empowerment, when traditional wisdom meets blockchain innovation, when "I am because we are" guides healthcare decisions - everyone heals together.</p>
+                    <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 0.9rem;">
+                        <div style="display: flex; align-items: center; gap: 8px;">⭐ Community-Governed Healthcare</div>
+                        <div style="display: flex; align-items: center; gap: 8px;">❤️ Traditional Knowledge Protected</div>
+                        <div style="display: flex; align-items: center; gap: 8px;">🌍 Global Healing Network</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function simulateMilestoneCompletion(milestoneIndex) {
+            const milestone = demoData.milestones[milestoneIndex];
+            if (!milestone.completed) {
+                milestone.completed = true;
+                milestone.fundsReleased = 2500;
+                milestone.witnesses = 18;
+                showAct(currentAct); // Refresh the current act
+                
+                // Simulate animation
+                setTimeout(() => {
+                    alert('🎉 Milestone Completed!\n• Recovery documentation uploaded\n• Community witness verification complete\n• Smart contract funds released automatically\n• Community celebration activated!');
+                }, 500);
+            }
+        }
+        
+        // Initialize demo when page loads
+        window.onload = initDemo;
+    </script>
+</body>
+</html>
