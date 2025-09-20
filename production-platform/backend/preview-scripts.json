@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "preview": "npx ts-node src/preview-server.ts",
+    "preview:build": "npx tsc src/preview-server.ts --outDir dist --target ES2020 --module commonjs --esModuleInterop --skipLibCheck",
+    "preview:start": "node dist/preview-server.js"
+  }
+}

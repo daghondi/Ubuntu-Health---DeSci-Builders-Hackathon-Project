@@ -1,7 +1,7 @@
-import { Inter } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+// Use system fonts instead of Google Fonts for deployment
+const inter = { className: 'font-sans' }
 
 export const metadata = {
   title: 'Ubuntu Health - Production Platform',
