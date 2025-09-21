@@ -1,4 +1,5 @@
 import './globals.css'
+import { InfinitaWalletProvider } from '../components/InfinitaWalletProvider'
 
 // Use system fonts instead of Google Fonts for deployment
 const inter = { className: 'font-sans' }
@@ -15,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <InfinitaWalletProvider>
+          {children}
+        </InfinitaWalletProvider>
+      </body>
     </html>
   )
 }
