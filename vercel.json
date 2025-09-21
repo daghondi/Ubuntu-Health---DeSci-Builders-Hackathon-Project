@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "name": "ubuntu-health-frontend",
+  "buildCommand": "cd production-platform/frontend && npm run build",
+  "installCommand": "cd production-platform/frontend && npm install",
+  "outputDirectory": "production-platform/frontend/.next",
+  "builds": [
+    {
+      "src": "production-platform/frontend/package.json",
+      "use": "@vercel/next",
+      "config": {
+        "zeroConfig": true
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "production-platform/frontend/$1"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://api.tale-verse.app",
+    "NEXT_PUBLIC_SOLANA_NETWORK": "devnet",
+    "NEXT_PUBLIC_SOLANA_RPC_URL": "https://api.devnet.solana.com",
+    "NEXT_PUBLIC_ANCHOR_WALLET": "",
+    "NEXT_PUBLIC_UBUNTU_PHILOSOPHY_IPFS": "",
+    "NEXT_PUBLIC_ELDER_COUNCIL_AUTHORITY": "",
+    "NEXT_PUBLIC_IPFS_GATEWAY": "https://ipfs.io/ipfs/",
+    "NEXT_PUBLIC_ARWEAVE_GATEWAY": "https://arweave.net/"
+  }
+}

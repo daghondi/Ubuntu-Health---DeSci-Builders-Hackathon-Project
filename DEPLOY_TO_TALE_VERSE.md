@@ -36,21 +36,26 @@ tale-verse.app (domain)
    - Add: `www.tale-verse.app`
    - Point DNS: `CNAME www -> cname.vercel-dns.com`
 
-### Option B: Vercel Dashboard
+### Option B: Vercel Dashboard (Recommended)
 1. Go to [vercel.com](https://vercel.com)
 2. **Import GitHub Repository:**
    - Connect: `daghondi/Ubuntu-Health---DeSci-Builders-Hackathon-Project`
-   - Root Directory: `production-platform/frontend`
+   - **IMPORTANT**: Leave Root Directory empty (vercel.json will handle routing)
    - Framework: Next.js (auto-detected)
 
-3. **Environment Variables:**
-   ```
+3. **Environment Variables (Add in Vercel Dashboard):**
+   ```env
    NEXT_PUBLIC_API_URL=https://api.tale-verse.app
    NEXT_PUBLIC_SOLANA_NETWORK=devnet
    NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
    ```
 
-4. **Custom Domain Setup:**
+4. **Deploy Settings:**
+   - Build Command: `cd production-platform/frontend && npm run build`
+   - Output Directory: `production-platform/frontend/.next`
+   - Install Command: `cd production-platform/frontend && npm install`
+
+5. **Custom Domain Setup:**
    - Project Settings → Domains
    - Add `www.tale-verse.app`
 
