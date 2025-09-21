@@ -36,24 +36,29 @@ tale-verse.app (domain)
    - Add: `www.tale-verse.app`
    - Point DNS: `CNAME www -> cname.vercel-dns.com`
 
-### Option B: Vercel Dashboard (Recommended)
+### Option B: Vercel Dashboard (Recommended) ✅ FIXED
+
 1. Go to [vercel.com](https://vercel.com)
 2. **Import GitHub Repository:**
    - Connect: `daghondi/Ubuntu-Health---DeSci-Builders-Hackathon-Project`
-   - **IMPORTANT**: Leave Root Directory empty (vercel.json will handle routing)
+   - **IMPORTANT**: Leave Root Directory empty 
    - Framework: Next.js (auto-detected)
+   - The `vercel.json` file will automatically handle the correct build paths
 
-3. **Environment Variables (Add in Vercel Dashboard):**
+3. **Environment Variables (These are pre-configured in vercel.json):**
    ```env
    NEXT_PUBLIC_API_URL=https://api.tale-verse.app
    NEXT_PUBLIC_SOLANA_NETWORK=devnet
    NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
+   NEXT_PUBLIC_ANCHOR_WALLET=""
+   NEXT_PUBLIC_UBUNTU_PHILOSOPHY_IPFS=""
+   NEXT_PUBLIC_ELDER_COUNCIL_AUTHORITY=""
    ```
 
-4. **Deploy Settings:**
-   - Build Command: `cd production-platform/frontend && npm run build`
-   - Output Directory: `production-platform/frontend/.next`
-   - Install Command: `cd production-platform/frontend && npm install`
+4. **Deploy Settings (Auto-configured via vercel.json):**
+   - ✅ Build Command: `cd production-platform/frontend && npm run build`
+   - ✅ Output Directory: `production-platform/frontend/.next`
+   - ✅ Install Command: `cd production-platform/frontend && npm install`
 
 5. **Custom Domain Setup:**
    - Project Settings → Domains
@@ -202,19 +207,25 @@ SOLANA_COMMITMENT=confirmed
 
 ### Common Issues:
 
-1. **CORS Errors:**
+1. **Vercel Build Errors (FIXED ✅):**
+   - ✅ Fixed: "Couldn't find any pages or app directory" 
+   - ✅ Fixed: Missing environment variables in next.config.js
+   - ✅ Fixed: Wrong root directory configuration
+   - Solution: Updated vercel.json with correct build paths
+
+2. **CORS Errors:**
    - Check `CORS_ORIGIN` includes your domain
    - Verify API URL in frontend
 
-2. **Build Failures:**
+3. **Build Failures:**
    - Check Node.js version (use Node 18+)
    - Verify all dependencies installed
 
-3. **API Not Responding:**
+4. **API Not Responding:**
    - Check backend deployment logs
    - Verify environment variables set
 
-4. **Domain Not Resolving:**
+5. **Domain Not Resolving:**
    - DNS propagation takes 24-48 hours
    - Use `nslookup` to verify DNS records
 
