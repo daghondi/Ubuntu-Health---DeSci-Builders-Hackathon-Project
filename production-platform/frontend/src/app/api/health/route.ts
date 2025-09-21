@@ -8,6 +8,7 @@ export async function GET() {
       version: process.env.npm_package_version || '1.0.0',
       environment: process.env.NODE_ENV || 'production',
       service: 'Ubuntu Health API',
+      deployed: 'tale-verse.app',
       platform: 'Vercel Functions'
     });
   } catch (error) {
