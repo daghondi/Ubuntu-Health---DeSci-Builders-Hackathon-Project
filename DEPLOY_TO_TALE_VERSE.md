@@ -4,13 +4,15 @@
 
 Your Ubuntu Health platform is now **production-ready** and successfully committed to GitHub. Here's how to deploy to `tale-verse.app`:
 
-## 🎯 Deployment Architecture
+## 🎯 Deployment Architecture ✅ UPDATED
 
 ```
 tale-verse.app (domain)
-├── www.tale-verse.app (frontend - Next.js)
-└── api.tale-verse.app (backend - Express.js API)
+├── www.tale-verse.app (UNIFIED - Next.js + API Routes)
+└── [NO SEPARATE BACKEND NEEDED]
 ```
+
+**✅ BACKEND CONVERTED:** Express.js backend has been successfully converted to Vercel Functions (Next.js API routes). No separate backend deployment needed!
 
 ## 📝 Step 1: Deploy Frontend to Vercel
 
@@ -45,14 +47,16 @@ tale-verse.app (domain)
    - Framework: Next.js (auto-detected)
    - The `vercel.json` file will automatically handle the correct build paths
 
-3. **Environment Variables (These are pre-configured in vercel.json):**
+3. **Environment Variables (Updated for Vercel Functions):**
    ```env
-   NEXT_PUBLIC_API_URL=https://api.tale-verse.app
+   NEXT_PUBLIC_API_URL=/api
    NEXT_PUBLIC_SOLANA_NETWORK=devnet
    NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
-   NEXT_PUBLIC_ANCHOR_WALLET=""
-   NEXT_PUBLIC_UBUNTU_PHILOSOPHY_IPFS=""
-   NEXT_PUBLIC_ELDER_COUNCIL_AUTHORITY=""
+   JWT_SECRET=ubuntu_health_super_secret_jwt_key_2024_production_ready
+   JWT_EXPIRES_IN=1h
+   JWT_REFRESH_EXPIRES_IN=7d
+   API_VERSION=v1
+   NODE_ENV=production
    ```
 
 4. **Deploy Settings (Auto-configured via vercel.json):**
@@ -64,76 +68,47 @@ tale-verse.app (domain)
    - Project Settings → Domains
    - Add `www.tale-verse.app`
 
-## 🛠️ Step 2: Deploy Backend API
+## ✅ Step 2: Backend Already Integrated!
 
-### Option A: Railway (Recommended)
-1. **Go to Railway:** [railway.app](https://railway.app)
-2. **Deploy from GitHub:**
-   - New Project → Deploy from GitHub
-   - Select repository → Root: `production-platform/backend`
+**🎉 NO SEPARATE BACKEND NEEDED!** 
 
-3. **Environment Variables:**
-   ```
-   NODE_ENV=production
-   PORT=3001
-   JWT_SECRET=your-super-secret-jwt-key-here
-   CORS_ORIGIN=https://www.tale-verse.app,https://tale-verse.app
-   DATABASE_URL=postgresql://username:password@hostname:port/database
-   SOLANA_RPC_URL=https://api.devnet.solana.com
-   SOLANA_COMMITMENT=confirmed
-   ```
+The Express.js backend has been successfully converted to **Vercel Functions** (Next.js API routes). All API endpoints are now part of the unified Next.js deployment:
 
-4. **Custom Domain:**
-   - Settings → Networking → Custom Domain
-   - Add: `api.tale-verse.app`
+### Available API Endpoints (Built-in):
+- `GET /api/health` - Health check
+- `GET /api/api-docs` - API documentation  
+- `POST /api/v1/auth/login` - Solana wallet authentication
+- `POST /api/v1/auth/refresh` - Token refresh
+- `GET /api/v1/auth/me` - User information
+- `GET /api/v1/patients` - Patient data with filtering
+- `GET /api/v1/sponsors` - Sponsor data with filtering
+- `GET /api/v1/treatments` - Treatment protocols
+- `GET /api/v1/sponsorships` - Sponsorship tracking
+- `GET /api/v1/research` - Research studies
+- `GET /api/v1/governance` - DAO governance proposals
 
-### Option B: DigitalOcean App Platform
-1. **Create App:** [cloud.digitalocean.com/apps](https://cloud.digitalocean.com/apps)
-2. **GitHub Integration:**
-   - Source: GitHub → Select repository
-   - Branch: main
-   - Source Directory: `production-platform/backend`
-
-3. **App Spec Configuration:**
-   ```yaml
-   name: ubuntu-health-api
-   services:
-   - name: api
-     source_dir: production-platform/backend
-     github:
-       repo: daghondi/Ubuntu-Health---DeSci-Builders-Hackathon-Project
-       branch: main
-     run_command: npm start
-     environment_slug: node-js
-     instance_count: 1
-     instance_size_slug: basic-xxs
-     envs:
-     - key: NODE_ENV
-       value: production
-     - key: PORT
-       value: "8080"
-     - key: JWT_SECRET
-       value: your-jwt-secret
-   domains:
-   - domain: api.tale-verse.app
-   ```
+### Benefits:
+- ✅ **Cost**: No separate backend hosting needed
+- ✅ **Performance**: Edge functions with global distribution
+- ✅ **Maintenance**: Single deployment pipeline
+- ✅ **Scaling**: Automatic serverless scaling
 
 ## 🌐 Step 3: DNS Configuration
 
 ### Domain Registrar Settings (tale-verse.app)
-```
-# A Records
+```dns
+# Updated for Unified Vercel Deployment
 tale-verse.app         A      76.76.19.19  (Vercel)
 www.tale-verse.app     CNAME  cname.vercel-dns.com
 
-# API Subdomain
-api.tale-verse.app     CNAME  [backend-provider-url]
+# NO SEPARATE API SUBDOMAIN NEEDED
+# All API endpoints are served from www.tale-verse.app/api/*
 ```
 
 ### Cloudflare (if using)
 1. **Add DNS Records:**
    - `www` → CNAME → `cname.vercel-dns.com`
-   - `api` → CNAME → [Railway/DO URL]
+   - ~~`api` → No longer needed~~
 
 2. **SSL/TLS Settings:**
    - Mode: Full (strict)
@@ -159,9 +134,9 @@ vercel --prod
 ## ✅ Step 5: Verification
 
 ### Test URLs:
-- **Frontend:** https://www.tale-verse.app
-- **API Health:** https://api.tale-verse.app/health
-- **API Docs:** https://api.tale-verse.app/api-docs
+- **Frontend:** <https://www.tale-verse.app>
+- **API Health:** <https://www.tale-verse.app/api/health>
+- **API Docs:** <https://www.tale-verse.app/api/api-docs>
 
 ### Test Flow:
 1. Visit https://www.tale-verse.app
@@ -171,23 +146,23 @@ vercel --prod
 
 ## 🔧 Environment Variables Summary
 
-### Frontend (.env.local):
-```
-NEXT_PUBLIC_API_URL=https://api.tale-verse.app
+### Unified Next.js App (.env.local):
+```env
+# Frontend Configuration
+NEXT_PUBLIC_API_URL=/api
 NEXT_PUBLIC_SOLANA_NETWORK=devnet
 NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
+
+# Vercel Functions (API) Configuration
+JWT_SECRET=ubuntu_health_super_secret_jwt_key_2024_production_ready
+JWT_EXPIRES_IN=1h
+JWT_REFRESH_EXPIRES_IN=7d
+API_VERSION=v1
+NODE_ENV=production
 ```
 
-### Backend (.env):
-```
-NODE_ENV=production
-PORT=3001
-JWT_SECRET=your-super-secret-jwt-key-minimum-32-characters
-CORS_ORIGIN=https://www.tale-verse.app,https://tale-verse.app
-DATABASE_URL=postgresql://user:pass@host:port/db
-SOLANA_RPC_URL=https://api.devnet.solana.com
-SOLANA_COMMITMENT=confirmed
-```
+### ~~Backend (.env): NO LONGER NEEDED~~
+Backend has been converted to Vercel Functions - all configuration is in the single Next.js app.
 
 ## 🚨 Production Checklist
 
