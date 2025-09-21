@@ -9,6 +9,8 @@ export async function GET() {
       environment: process.env.NODE_ENV || 'production',
       service: 'Ubuntu Health API',
       deployed: 'tale-verse.app',
+      apiRoutesFixed: true,
+      deploymentTest: new Date().toISOString(),
       platform: 'Vercel Functions'
     });
   } catch (error) {
