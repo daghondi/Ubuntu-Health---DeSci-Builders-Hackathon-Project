@@ -203,56 +203,47 @@ export default function HomePage() {
         <section className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              Live API Endpoints
+              Privacy-Preserving Research APIs
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore our RESTful API built for healthcare coordination and blockchain integration
+              Token-gated access to anonymized health data protected by zero-knowledge proofs and Ubuntu community governance
             </p>
           </div>
           
           <div className="glass-card rounded-2xl p-8">
             <div className="bg-gray-900 text-biotech-green rounded-xl p-6 font-mono text-sm overflow-x-auto">
               <div className="mb-4 flex items-center">
-                <span className="bg-green-500 text-white px-2 py-1 rounded text-xs mr-3">GET</span>
-                <code>/health</code>
-                <div className="ml-4 text-gray-400 text-xs">→ Backend health check</div>
+                <span className="bg-purple-500 text-white px-2 py-1 rounded text-xs mr-3">GET</span>
+                <code>/api/research/treatment-outcomes</code>
+                <div className="ml-4 text-gray-400 text-xs">→ ZK-proof verified treatment data</div>
               </div>
               <div className="mb-4 flex items-center">
-                <span className="bg-blue-500 text-white px-2 py-1 rounded text-xs mr-3">POST</span>
-                <code>/api/v1/auth/login</code>
-                <div className="ml-4 text-gray-400 text-xs">→ Wallet authentication</div>
+                <span className="bg-purple-500 text-white px-2 py-1 rounded text-xs mr-3">GET</span>
+                <code>/api/research/biomarkers</code>
+                <div className="ml-4 text-gray-400 text-xs">→ Anonymized lab results & genetic data</div>
               </div>
               <div className="mb-4 flex items-center">
-                <span className="bg-green-500 text-white px-2 py-1 rounded text-xs mr-3">GET</span>
-                <code>/api/v1/patients</code>
-                <div className="ml-4 text-gray-400 text-xs">→ Patient management</div>
-              </div>
-              <div className="mb-4 flex items-center">
-                <span className="bg-green-500 text-white px-2 py-1 rounded text-xs mr-3">GET</span>
-                <code>/api/v1/sponsors</code>
-                <div className="ml-4 text-gray-400 text-xs">→ Sponsor discovery</div>
-              </div>
-              <div className="mb-4 flex items-center">
-                <span className="bg-green-500 text-white px-2 py-1 rounded text-xs mr-3">GET</span>
-                <code>/api/v1/treatments</code>
-                <div className="ml-4 text-gray-400 text-xs">→ Treatment requests & milestones</div>
+                <span className="bg-purple-500 text-white px-2 py-1 rounded text-xs mr-3">GET</span>
+                <code>/api/research/traditional-healing</code>
+                <div className="ml-4 text-gray-400 text-xs">→ Cultural practices & integration outcomes</div>
               </div>
               <div className="flex items-center">
-                <span className="bg-green-500 text-white px-2 py-1 rounded text-xs mr-3">GET</span>
-                <code>/api/v1/blockchain/balance/:wallet</code>
-                <div className="ml-4 text-gray-400 text-xs">→ Wallet balance & tokens</div>
+                <span className="bg-purple-500 text-white px-2 py-1 rounded text-xs mr-3">GET</span>
+                <code>/api/research/lifestyle-correlation</code>
+                <div className="ml-4 text-gray-400 text-xs">→ Ubuntu community health patterns</div>
               </div>
             </div>
             
-            <div className="mt-6 flex justify-center">
+            <div className="mt-6 flex justify-center space-x-4">
               <a 
-                href="/api/health" 
-                target="_blank"
-                className="bg-biotech-green hover:bg-biotech-green-dark text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center"
+                href="/research-api" 
+                className="biotech-gradient px-6 py-3 rounded-lg text-white font-semibold hover:scale-105 transition-transform duration-200"
               >
-                Test API Health
-                <span className="ml-2">🔗</span>
+                Explore Research APIs
               </a>
+              <div className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-semibold">
+                � Privacy-First • 🏛️ Community-Governed • 💰 Token-Gated
+              </div>
             </div>
           </div>
         </section>
@@ -341,92 +332,89 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Development Status */}
+        {/* Platform Impact & Innovation */}
         <section className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              Development Progress
+              Platform Impact & Innovation
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Tracking our journey from concept to production deployment
+              Revolutionizing healthcare research through privacy-preserving data sharing and Ubuntu philosophy
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="glass-card rounded-2xl p-8 border-l-4 border-biotech-green">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-biotech-green text-white rounded-xl flex items-center justify-center mr-4">
-                  <span className="text-xl">✅</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800">Production Ready</h3>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="glass-card rounded-2xl p-8 text-center border-l-4 border-biotech-green">
+              <div className="w-16 h-16 bg-biotech-green text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold">5</span>
               </div>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-biotech-green rounded-full mr-3"></div>
-                  Production backend API architecture
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-biotech-green rounded-full mr-3"></div>
-                  Next.js frontend application scaffold
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-biotech-green rounded-full mr-3"></div>
-                  Database schema design (15+ tables)
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-biotech-green rounded-full mr-3"></div>
-                  Smart contract integration layer
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-biotech-green rounded-full mr-3"></div>
-                  Security middleware & authentication
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-biotech-green rounded-full mr-3"></div>
-                  Email/SMS notification system
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-biotech-green rounded-full mr-3"></div>
-                  Live deployment at tale-verse.app
-                </li>
-              </ul>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">DeSci Tracks</h3>
+              <p className="text-gray-600">Comprehensive integration of all hackathon focus areas in a unified platform</p>
             </div>
             
-            <div className="glass-card rounded-2xl p-8 border-l-4 border-blue-500">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center mr-4">
-                  <span className="text-xl">🚧</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800">Next Milestones</h3>
+            <div className="glass-card rounded-2xl p-8 text-center border-l-4 border-purple-500">
+              <div className="w-16 h-16 bg-purple-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-lg font-bold">ZKP</span>
               </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Privacy-First</h3>
+              <p className="text-gray-600">Zero-knowledge proofs and differential privacy protect patient data</p>
+            </div>
+            
+            <div className="glass-card rounded-2xl p-8 text-center border-l-4 border-blue-500">
+              <div className="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold">4</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Data Categories</h3>
+              <p className="text-gray-600">Treatment outcomes, biomarkers, lifestyle, and traditional healing</p>
+            </div>
+          </div>
+
+          <div className="glass-card rounded-2xl p-8 border-l-4 border-yellow-500">
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-yellow-500 text-white rounded-xl flex items-center justify-center mr-4">
+                <span className="text-xl">★</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800">Unique Innovations</h3>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
               <ul className="space-y-3 text-gray-700">
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  Smart contract deployment to devnet
+                <li className="flex items-start">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3 mt-2"></div>
+                  <div>
+                    <strong>Ubuntu Philosophy Integration:</strong> Community-governed health decisions with cultural wisdom
+                  </div>
                 </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  Advanced UI component library
+                <li className="flex items-start">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3 mt-2"></div>
+                  <div>
+                    <strong>LIVES Token Economy:</strong> Incentivized research participation with privacy protection
+                  </div>
                 </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  Patient onboarding workflow
+                <li className="flex items-start">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3 mt-2"></div>
+                  <div>
+                    <strong>Traditional Medicine Bridge:</strong> Scientific validation of cultural healing practices
+                  </div>
                 </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  Sponsor discovery interface
+              </ul>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3 mt-2"></div>
+                  <div>
+                    <strong>Differential Privacy:</strong> Mathematical guarantees for individual data protection
+                  </div>
                 </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  Real-time milestone tracking
+                <li className="flex items-start">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3 mt-2"></div>
+                  <div>
+                    <strong>Research Data Marketplace:</strong> 300-2000 LIVES tokens per contribution category
+                  </div>
                 </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  Mobile application development
-                </li>
-                <li className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  International compliance features
+                <li className="flex items-start">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3 mt-2"></div>
+                  <div>
+                    <strong>Live Platform:</strong> Fully deployed at tale-verse.app with interactive features
+                  </div>
                 </li>
               </ul>
             </div>
