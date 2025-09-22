@@ -86,53 +86,83 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* LIVES Token Showcase */}
+      {/* Token Economy Section */}
       <section className="py-16 bg-gradient-to-r from-emerald-50 to-blue-50">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex items-center justify-center mb-8">
-              <LivesTokenLogo size={80} showText={false} />
-              <div className="ml-6 text-left">
-                <h2 className="text-4xl font-bold text-gray-900 mb-2">$LIVES Token</h2>
-                <p className="text-xl text-gray-600">The heartbeat of Ubuntu Health ecosystem</p>
+          <div className="max-w-5xl mx-auto">
+            {/* Header with Token */}
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center bg-white rounded-full px-6 py-3 shadow-lg mb-6">
+                <LivesTokenLogo size={32} showText={true} />
+                <span className="ml-3 text-gray-600">powering healthcare innovation</span>
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Three Ways to Make Impact</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Join a community where your health data, generosity, and research needs create a thriving ecosystem
+              </p>
+            </div>
+            
+            {/* Impact Cards */}
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <span className="text-2xl text-white">📊</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Share & Earn</h3>
+                <p className="text-gray-600 mb-4">
+                  Contribute your anonymized health data to accelerate medical breakthroughs worldwide
+                </p>
+                <div className="flex items-center gap-2 text-emerald-600 font-semibold">
+                  <LivesTokenLogo size={16} showText={false} />
+                  <span>300-2000 monthly rewards</span>
+                </div>
+              </div>
+              
+              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <span className="text-2xl text-white">🤝</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Fund Hope</h3>
+                <p className="text-gray-600 mb-4">
+                  Sponsor life-saving treatments and directly impact patients in need across the globe
+                </p>
+                <div className="text-blue-600 font-semibold">
+                  Direct patient funding
+                </div>
+              </div>
+              
+              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <span className="text-2xl text-white">🔬</span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Access Insights</h3>
+                <p className="text-gray-600 mb-4">
+                  Unlock privacy-preserving research data through our tokenized API ecosystem
+                </p>
+                <div className="text-purple-600 font-semibold">
+                  Zero-knowledge research
+                </div>
               </div>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <div className="bg-white rounded-xl p-6 shadow-lg">
-                <LivesTokenLogo size={48} showText={false} className="mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Earn Through Data</h3>
-                <p className="text-gray-600 text-sm">Contribute anonymized health data and earn 300-2000 LIVES tokens monthly</p>
+            {/* Call to Action */}
+            <div className="text-center mt-12">
+              <div className="inline-flex flex-col sm:flex-row gap-4">
+                <a 
+                  href="/research"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-xl hover:from-emerald-700 hover:to-teal-700 transition-all duration-200 transform hover:scale-105 shadow-lg"
+                >
+                  <span className="text-xl">📊</span>
+                  Start Contributing
+                </a>
+                <a 
+                  href="/sponsorship"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 transform hover:scale-105 shadow-lg"
+                >
+                  <span className="text-xl">🤝</span>
+                  Support Patients  
+                </a>
               </div>
-              
-              <div className="bg-white rounded-xl p-6 shadow-lg">
-                <LivesTokenLogo size={48} showText={false} className="mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Fund Treatments</h3>
-                <p className="text-gray-600 text-sm">Sponsor life-saving treatments and support patients in need worldwide</p>
-              </div>
-              
-              <div className="bg-white rounded-xl p-6 shadow-lg">
-                <LivesTokenLogo size={48} showText={false} className="mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Access Research</h3>
-                <p className="text-gray-600 text-sm">Use LIVES tokens to access privacy-preserving research APIs and data</p>
-              </div>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/research"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors"
-              >
-                <LivesTokenLogo size={20} showText={false} />
-                Start Earning LIVES
-              </a>
-              <a 
-                href="/sponsorship"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-emerald-600 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition-colors"
-              >
-                <LivesTokenLogo size={20} showText={false} />
-                Sponsor a Patient
-              </a>
             </div>
           </div>
         </div>
