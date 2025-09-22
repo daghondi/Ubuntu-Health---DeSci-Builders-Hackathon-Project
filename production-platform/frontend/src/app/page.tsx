@@ -75,10 +75,22 @@ export default function HomePage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="biotech-gradient px-8 py-4 rounded-lg text-white font-semibold text-lg hover:scale-105 transition-transform duration-200 shadow-xl">
+              <button 
+                onClick={() => {
+                  // Scroll to the sponsorship section to show live platform functionality
+                  document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="biotech-gradient px-8 py-4 rounded-lg text-white font-semibold text-lg hover:scale-105 transition-transform duration-200 shadow-xl"
+              >
                 Launch Platform
               </button>
-              <button className="border border-slate-400 px-8 py-4 rounded-lg text-slate-300 font-semibold text-lg hover:bg-slate-800/50 transition-colors duration-200">
+              <button 
+                onClick={() => {
+                  // Navigate to the research API documentation
+                  window.location.href = '/research-api';
+                }}
+                className="border border-slate-400 px-8 py-4 rounded-lg text-slate-300 font-semibold text-lg hover:bg-slate-800/50 transition-colors duration-200"
+              >
                 View Documentation
               </button>
             </div>
@@ -104,7 +116,10 @@ export default function HomePage() {
             
             {/* Impact Cards */}
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div 
+                onClick={() => window.location.href = '/research'}
+                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              >
                 <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <span className="text-2xl text-white">📊</span>
                 </div>
@@ -118,7 +133,10 @@ export default function HomePage() {
                 </div>
               </div>
               
-              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div 
+                onClick={() => document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' })}
+                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              >
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <span className="text-2xl text-white">🤝</span>
                 </div>
@@ -131,7 +149,10 @@ export default function HomePage() {
                 </div>
               </div>
               
-              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div 
+                onClick={() => window.location.href = '/research-api'}
+                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              >
                 <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <span className="text-2xl text-white">🔬</span>
                 </div>
@@ -191,7 +212,10 @@ export default function HomePage() {
           
             <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {/* Decentralized Care */}
-              <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+              <div 
+                onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
+                className="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
                 <div className="w-16 h-16 biotech-gradient rounded-2xl flex items-center justify-center mb-6">
                   <span className="text-3xl">🏥</span>
                 </div>
@@ -216,7 +240,10 @@ export default function HomePage() {
               </div>
 
               {/* Treatment Coordination */}
-              <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+              <div 
+                onClick={() => document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' })}
+                className="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
                 <div className="w-16 h-16 biotech-gradient rounded-2xl flex items-center justify-center mb-6">
                   <span className="text-3xl">🧬</span>
                 </div>
@@ -246,7 +273,10 @@ export default function HomePage() {
             </div>
 
             {/* Smart Contracts */}
-            <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+            <div 
+              onClick={() => window.location.href = '/research-api'}
+              className="glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300 cursor-pointer"
+            >
               <div className="w-16 h-16 biotech-gradient rounded-2xl flex items-center justify-center mb-6">
                 <span className="text-3xl">⛓️</span>
               </div>

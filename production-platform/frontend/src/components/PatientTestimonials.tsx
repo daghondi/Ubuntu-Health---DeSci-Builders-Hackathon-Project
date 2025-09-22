@@ -122,7 +122,7 @@ export const PatientTestimonials: React.FC = () => {
     }
   };
   return (
-    <section className="py-24 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
+    <section id="testimonials" className="py-24 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -152,11 +152,11 @@ export const PatientTestimonials: React.FC = () => {
                     <img
                       src={testimonial.profileImage}
                       alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-emerald-200"
+                      className="w-24 h-24 rounded-full object-cover border-3 border-emerald-200 shadow-lg"
                     />
                     {testimonial.verified && (
-                      <div className="absolute -top-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
-                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <div className="absolute -top-1 -right-1 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                       </div>

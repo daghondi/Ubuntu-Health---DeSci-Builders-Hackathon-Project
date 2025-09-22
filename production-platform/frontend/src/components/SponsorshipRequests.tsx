@@ -127,7 +127,7 @@ export function SponsorshipRequests() {
   };
 
   return (
-    <section className="py-24 bg-white">
+    <section id="sponsors" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -150,7 +150,7 @@ export function SponsorshipRequests() {
                 <img
                   src={sponsorshipRequests[0].patientImage}
                   alt={sponsorshipRequests[0].patientName}
-                  className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
+                  className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-xl"
                 />
                 <div className="absolute -top-2 -right-2">
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-500 text-white">
@@ -235,11 +235,11 @@ export function SponsorshipRequests() {
                       <img
                         src={request.patientImage}
                         alt={request.patientName}
-                        className="w-16 h-16 rounded-full object-cover border-2 border-gray-200"
+                        className="w-20 h-20 rounded-full object-cover border-3 border-gray-200 shadow-md"
                       />
                       {request.verified && (
-                        <div className="absolute -top-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
-                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
+                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
                         </div>
@@ -310,8 +310,30 @@ export function SponsorshipRequests() {
         {/* View All Button */}
         <div className="text-center mt-12">
           <button 
-            onClick={() => alert('Browse all treatment requests and find more patients to support in the Ubuntu Health community.')}
-            className="px-8 py-3 border-2 border-emerald-600 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition-colors"
+            onClick={() => {
+              // Enhanced functionality - could navigate to dedicated page or show expanded view
+              const message = `🏥 Browse All Treatment Requests
+              
+🌍 Discover more patients in need across the Ubuntu Health global community:
+
+• 250+ active treatment requests worldwide
+• Urgent cases requiring immediate support  
+• Rare disease treatments needing funding
+• Success stories you can help create
+
+🤝 Your support makes healing possible!
+
+Ready to explore all sponsorship opportunities?`;
+              
+              if (confirm(message)) {
+                // In a real implementation, this would navigate to a dedicated page
+                // For now, we'll use social sharing to spread awareness
+                const shareMessage = "🌍 Join me in supporting patients worldwide through Ubuntu Health! Decentralized healthcare funding that saves lives. Every contribution matters! 🏥💚 #UbuntuHealth #DecentralizedHealthcare";
+                const shareUrl = encodeURIComponent(window.location.origin);
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage)}&url=${shareUrl}`, '_blank', 'width=600,height=400');
+              }
+            }}
+            className="px-8 py-3 border-2 border-emerald-600 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-600 hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 active:scale-95"
           >
             View All Sponsorship Requests →
           </button>
