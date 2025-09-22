@@ -4,6 +4,24 @@ import React, { useState } from 'react';
 import { LivesTokenLogo } from './LivesTokenLogo';
 import { DonationModal } from './DonationModal';
 import { TreatmentRequestModal } from './TreatmentRequestModal';
+import { PatientDetailModal } from './PatientDetailModal';
+
+interface SponsorshipRequest {
+  id: string;
+  patientName: string;
+  age: number;
+  condition: string;
+  treatmentNeeded: string;
+  targetAmount: number;
+  raisedAmount: number;
+  daysLeft: number;
+  urgency: 'low' | 'medium' | 'high' | 'critical';
+  patientImage: string;
+  location: string;
+  hospital: string;
+  story: string;
+  verified: boolean;
+}
 
 interface Testimonial {
   id: string;
@@ -56,6 +74,53 @@ const testimonials: Testimonial[] = [
 export const PatientTestimonials: React.FC = () => {
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   const [isTreatmentModalOpen, setIsTreatmentModalOpen] = useState(false);
+  const [selectedPatient, setSelectedPatient] = useState<SponsorshipRequest | null>(null);
+  const [showPatientDetailModal, setShowPatientDetailModal] = useState(false);
+
+  const handlePatientClick = (testimonial: Testimonial) => {
+    // Convert testimonial to patient format expected by PatientDetailModal
+    const patientData = {
+      id: testimonial.id,
+      patientName: testimonial.name,
+      age: 35, // Default age since testimonials don't have age
+      condition: testimonial.condition,
+      treatmentNeeded: testimonial.condition,
+      targetAmount: parseInt(testimonial.treatmentCost.replace(/[^\d]/g, '')),
+      raisedAmount: parseInt(testimonial.livesReceived.replace(/[^\d]/g, '')),
+      daysLeft: 0, // Completed testimonial
+      urgency: 'low' as const, // Success story, no urgency
+      patientImage: testimonial.profileImage,
+      location: testimonial.location,
+      hospital: 'Ubuntu Health Network',
+      story: testimonial.story,
+      verified: testimonial.verified
+    };
+    
+    setSelectedPatient(patientData);
+    setShowPatientDetailModal(true);
+  };
+
+  const handleDonate = (patient: SponsorshipRequest) => {
+    // For testimonials, this would show a message about the patient already being helped
+    alert(`${patient.patientName} has already received successful treatment through Ubuntu Health! Consider supporting other patients in need.`);
+  };
+
+  const handleShare = (patient: SponsorshipRequest, platform: string) => {
+    const successMessage = `🎉 Success story: ${patient.patientName} from ${patient.location} received life-saving treatment through Ubuntu Health! The community raised ${patient.raisedAmount} LIVES tokens for ${patient.condition}. This is the power of decentralized healthcare! 🌍💚 #UbuntuHealth #DecentralizedHealthcare #LIVES`;
+    
+    const shareUrls = {
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(successMessage)}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(successMessage)}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}&summary=${encodeURIComponent(successMessage)}`,
+      whatsapp: `https://wa.me/?text=${encodeURIComponent(successMessage)}`,
+      telegram: `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(successMessage)}`
+    };
+
+    const url = shareUrls[platform as keyof typeof shareUrls];
+    if (url) {
+      window.open(url, '_blank', 'width=600,height=400');
+    }
+  };
   return (
     <section className="py-24 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,7 +142,8 @@ export const PatientTestimonials: React.FC = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+              onClick={() => handlePatientClick(testimonial)}
+              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 cursor-pointer hover:border-emerald-300 hover:scale-[1.02]"
             >
               {/* Patient Profile Header */}
               <div className="p-6 border-b border-gray-100">
@@ -178,6 +244,16 @@ export const PatientTestimonials: React.FC = () => {
         isOpen={isTreatmentModalOpen}
         onClose={() => setIsTreatmentModalOpen(false)}
       />
+      
+      {selectedPatient && (
+        <PatientDetailModal
+          isOpen={showPatientDetailModal}
+          onClose={() => setShowPatientDetailModal(false)}
+          patient={selectedPatient}
+          onDonate={handleDonate}
+          onShare={handleShare}
+        />
+      )}
     </section>
   );
 }

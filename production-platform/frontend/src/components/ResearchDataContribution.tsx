@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useInfinitaWallet } from './InfinitaWalletProvider';
 import { LivesTokenLogo } from './LivesTokenLogo';
+import { LearnMoreModal } from './LearnMoreModal';
 
 interface DataContributionOption {
   id: string;
@@ -32,6 +33,26 @@ export const ResearchDataContribution: React.FC = () => {
   const [selectedContributions, setSelectedContributions] = useState<string[]>([]);
   const [showPrivacySettings, setShowPrivacySettings] = useState(false);
   const [activeTab, setActiveTab] = useState<'contribute' | 'partnerships' | 'earnings' | 'privacy'>('contribute');
+  const [showLearnMoreModal, setShowLearnMoreModal] = useState(false);
+  const [learnMoreContent, setLearnMoreContent] = useState<{
+    title: string;
+    content: {
+      overview: string;
+      features: string[];
+      benefits: string[];
+      howItWorks: { step: string; description: string; }[];
+      additionalInfo?: string;
+    };
+  }>({
+    title: '',
+    content: { 
+      overview: '', 
+      features: [], 
+      benefits: [], 
+      howItWorks: [],
+      additionalInfo: ''
+    }
+  });
   
   // Mock data for demonstration
   const dataContributionOptions: DataContributionOption[] = [
@@ -150,6 +171,38 @@ export const ResearchDataContribution: React.FC = () => {
     alert(`Successfully enrolled in ${selectedContributions.length} research contributions! You'll earn ${calculateTotalRewards()} LIVES tokens monthly. Your anonymized data will help advance medical research while maintaining your privacy through zero-knowledge proofs.`);
   };
 
+  const handleLearnMore = (partnership: ResearchPartnership) => {
+    setLearnMoreContent({
+      title: `Research Partnership: ${partnership.studyTitle}`,
+      content: {
+        overview: `${partnership.institution} is conducting ${partnership.studyTitle}. ${partnership.description} This research aims to advance medical knowledge and improve patient outcomes through community-driven data contribution.`,
+        features: [
+          `Data needed: ${partnership.dataNeeded.join(', ')}`,
+          `Reward per contribution: ${partnership.rewardPerContribution} LIVES tokens`,
+          `Current participants: ${partnership.participantCount} contributors`,
+          `Ethics review: ${partnership.ethicsReview ? 'Completed' : 'In progress'}`,
+          `Approval status: ${partnership.approvalStatus.replace('-', ' ').toUpperCase()}`
+        ],
+        benefits: [
+          'Contribute to groundbreaking medical research',
+          'Earn LIVES tokens for your data contributions',
+          'Help improve treatments for your condition',
+          'Join a community of engaged patients',
+          'Maintain full control over your data privacy'
+        ],
+        howItWorks: [
+          { step: 'Review Details', description: 'Review the research partnership details and requirements' },
+          { step: 'Connect Wallet', description: 'Connect your wallet and verify your eligibility' },
+          { step: 'Set Privacy', description: 'Choose your data privacy level (basic, advanced, or zero-knowledge)' },
+          { step: 'Submit Data', description: 'Submit your anonymized health data securely' },
+          { step: 'Earn Rewards', description: 'Receive LIVES token rewards directly to your wallet' },
+          { step: 'Track Impact', description: 'Track your contribution impact through our dashboard' }
+        ]
+      }
+    });
+    setShowLearnMoreModal(true);
+  };
+  
   const getPrivacyIcon = (level: string) => {
     switch (level) {
       case 'basic': return '🔒';
@@ -420,7 +473,10 @@ export const ResearchDataContribution: React.FC = () => {
                   <div className="text-sm text-gray-500">
                     Partnership approved by Ubuntu DAO governance
                   </div>
-                  <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm">
+                  <button 
+                    onClick={() => handleLearnMore(partnership)}
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                  >
                     Learn More
                   </button>
                 </div>
@@ -592,6 +648,14 @@ export const ResearchDataContribution: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Learn More Modal */}
+      <LearnMoreModal
+        isOpen={showLearnMoreModal}
+        onClose={() => setShowLearnMoreModal(false)}
+        title={learnMoreContent.title}
+        content={learnMoreContent.content}
+      />
     </div>
   );
 };

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { LivesTokenLogo } from './LivesTokenLogo';
 import { DonationModal } from './DonationModal';
+import { PatientDetailModal } from './PatientDetailModal';
 
 interface SponsorshipRequest {
   id: string;
@@ -107,12 +108,23 @@ const getProgressColor = (percentage: number) => {
 export function SponsorshipRequests() {
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState<SponsorshipRequest | null>(null);
+  const [isPatientDetailModalOpen, setIsPatientDetailModalOpen] = useState(false);
+  const [selectedPatientForDetails, setSelectedPatientForDetails] = useState<SponsorshipRequest | null>(null);
 
   const handleDonateClick = (patient: SponsorshipRequest) => {
     setSelectedPatient(patient);
     setIsDonationModalOpen(true);
   };
-  const [selectedRequest, setSelectedRequest] = useState<SponsorshipRequest | null>(null);
+
+  const handlePatientClick = (patient: SponsorshipRequest) => {
+    setSelectedPatientForDetails(patient);
+    setIsPatientDetailModalOpen(true);
+  };
+
+  const handleShare = (patient: SponsorshipRequest, platform: string) => {
+    // Analytics tracking could be added here
+    console.log(`Shared ${patient.patientName}'s request on ${platform}`);
+  };
 
   return (
     <section className="py-24 bg-white">
@@ -129,7 +141,10 @@ export function SponsorshipRequests() {
 
         {/* Main Featured Request */}
         <div className="mb-12">
-          <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-8 border-2 border-red-200">
+          <div 
+            onClick={() => handlePatientClick(sponsorshipRequests[0])}
+            className="bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-8 border-2 border-red-200 cursor-pointer hover:shadow-lg transition-all duration-300 hover:border-red-300"
+          >
             <div className="flex items-start gap-6">
               <div className="relative flex-shrink-0">
                 <img
@@ -176,13 +191,25 @@ export function SponsorshipRequests() {
                   </p>
                 </div>
                 
-                <button 
-                  onClick={() => handleDonateClick(sponsorshipRequests[0])}
-                  className="w-full md:w-auto px-8 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center gap-2"
-                >
-                  <LivesTokenLogo size={20} showText={false} />
-                  Donate LIVES Now
-                </button>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDonateClick(sponsorshipRequests[0]);
+                    }}
+                    className="px-8 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center gap-2"
+                  >
+                    <LivesTokenLogo size={20} showText={false} />
+                    Donate LIVES Now
+                  </button>
+                  <div className="text-sm text-gray-600 flex items-center gap-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    Click anywhere to view full details
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -198,7 +225,8 @@ export function SponsorshipRequests() {
             return (
               <div
                 key={request.id}
-                className="bg-white rounded-xl border border-gray-200 hover:border-emerald-300 hover:shadow-lg transition-all duration-300 p-6"
+                onClick={() => handlePatientClick(request)}
+                className="bg-white rounded-xl border border-gray-200 hover:border-emerald-300 hover:shadow-lg transition-all duration-300 p-6 cursor-pointer"
               >
                 <div className="flex flex-col md:flex-row gap-6">
                   {/* Patient Info */}
@@ -253,20 +281,23 @@ export function SponsorshipRequests() {
                         </p>
                       </div>
                       
-                      <div className="flex gap-3">
+                      <div className="flex flex-col sm:flex-row gap-3 items-start">
                         <button 
-                          onClick={() => handleDonateClick(request)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDonateClick(request);
+                          }}
                           className="px-6 py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors flex items-center gap-2"
                         >
                           <LivesTokenLogo size={16} showText={false} />
                           Donate
                         </button>
-                        <button 
-                          onClick={() => alert(`Learn more about ${request.patientName}'s treatment journey and medical needs.`)}
-                          className="px-6 py-2 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
-                        >
-                          Learn More
-                        </button>
+                        <div className="text-sm text-gray-600 flex items-center gap-2">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          Click card for details & sharing
+                        </div>
                       </div>
                     </div>
                   </div>
