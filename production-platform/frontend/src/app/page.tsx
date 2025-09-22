@@ -43,6 +43,8 @@ export default function HomePage() {
                 <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
                 <a href="#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">Stories</a>
                 <a href="#sponsors" className="text-gray-600 hover:text-gray-900 transition-colors">Support</a>
+                <a href="/research" className="text-gray-600 hover:text-gray-900 transition-colors">Research</a>
+                <a href="/research-api" className="text-gray-600 hover:text-gray-900 transition-colors">API</a>
               </nav>
               <WalletConnectButton size="sm" variant="outline" />
             </div>
@@ -428,6 +430,71 @@ export default function HomePage() {
                 </li>
               </ul>
             </div>
+          </div>
+        </section>
+
+        {/* Research Data Contribution */}
+        <section className="mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+              Advance Medical Research & Earn LIVES Tokens
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Share your anonymized health data to accelerate medical breakthroughs worldwide. 
+              Protected by zero-knowledge proofs and Ubuntu community governance.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="glass-card rounded-2xl p-8 text-center hover:scale-105 transition-transform duration-300">
+              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-emerald-500 to-blue-600 rounded-2xl flex items-center justify-center">
+                <span className="text-2xl text-white">🧬</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Data Contribution</h3>
+              <p className="text-gray-600 mb-4">
+                Contribute anonymized treatment outcomes, biomarkers, and wellness data to help researchers 
+                develop better treatments for future patients.
+              </p>
+              <div className="flex items-center justify-center gap-2 text-emerald-600 font-semibold">
+                <LivesTokenLogo size={20} showText={false} />
+                <span>300-750 LIVES/month</span>
+              </div>
+            </div>
+            
+            <div className="glass-card rounded-2xl p-8 text-center hover:scale-105 transition-transform duration-300">
+              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center">
+                <span className="text-2xl text-white">🔐</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Privacy Protected</h3>
+              <p className="text-gray-600 mb-4">
+                Your data is protected by zero-knowledge proofs. Researchers get insights without ever 
+                seeing your personal information or identity.
+              </p>
+              <div className="text-purple-600 font-semibold">100% Anonymous</div>
+            </div>
+            
+            <div className="glass-card rounded-2xl p-8 text-center hover:scale-105 transition-transform duration-300">
+              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl flex items-center justify-center">
+                <span className="text-2xl text-white">👥</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-3">Ubuntu Governance</h3>
+              <p className="text-gray-600 mb-4">
+                Ubuntu community approves all research partnerships. Traditional healing knowledge 
+                is preserved and integrated with modern medicine.
+              </p>
+              <div className="text-orange-600 font-semibold">Community Controlled</div>
+            </div>
+          </div>
+          
+          <div className="text-center mt-8">
+            <a 
+              href="/research"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 text-white font-semibold rounded-xl hover:from-emerald-700 hover:to-blue-700 transition-all duration-200 transform hover:scale-105"
+            >
+              <span className="text-xl">🧬</span>
+              Start Contributing to Research
+              <LivesTokenLogo size={20} showText={false} />
+            </a>
           </div>
         </section>
 

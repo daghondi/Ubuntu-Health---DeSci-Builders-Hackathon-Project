@@ -8,6 +8,8 @@ import { clusterApiUrl } from '@solana/web3.js';
 import { RecoveryLogger } from './components/RecoveryLogger';
 import { TreatmentRequestBrowser } from './components/TreatmentRequestBrowser';
 import { SponsorDashboard } from './components/SponsorDashboard';
+import ResearchDataContribution from './components/ResearchDataContribution';
+import ResearchAPIAccess from './components/ResearchAPIAccess';
 import './App.css';
 
 // Import wallet adapter CSS
@@ -56,6 +58,18 @@ function App() {
                       >
                         Sponsor Dashboard
                       </Link>
+                      <Link 
+                        to="/research" 
+                        className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        Research Data
+                      </Link>
+                      <Link 
+                        to="/research-api" 
+                        className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        API Access
+                      </Link>
                       <div className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium">
                         Connect Wallet
                       </div>
@@ -71,6 +85,8 @@ function App() {
                   <Route path="/browse" element={<TreatmentRequestBrowser />} />
                   <Route path="/recovery" element={<RecoveryLogger />} />
                   <Route path="/sponsor" element={<SponsorDashboard />} />
+                  <Route path="/research" element={<ResearchDataContribution />} />
+                  <Route path="/research-api" element={<ResearchAPIAccess />} />
                 </Routes>
               </main>
 
@@ -117,6 +133,18 @@ function App() {
                         <li><a href="#" className="text-gray-600 hover:text-gray-900">Sponsor Dashboard</a></li>
                         <li><a href="#" className="text-gray-600 hover:text-gray-900">Impact Tracking</a></li>
                         <li><a href="#" className="text-gray-600 hover:text-gray-900">Community Recognition</a></li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
+                        Research & Data
+                      </h3>
+                      <ul className="space-y-2">
+                        <li><Link to="/research" className="text-gray-600 hover:text-gray-900">Contribute Data</Link></li>
+                        <li><Link to="/research-api" className="text-gray-600 hover:text-gray-900">API Access</Link></li>
+                        <li><a href="#" className="text-gray-600 hover:text-gray-900">Privacy Protection</a></li>
+                        <li><a href="#" className="text-gray-600 hover:text-gray-900">Earn LIVES Tokens</a></li>
                       </ul>
                     </div>
                   </div>
@@ -265,19 +293,33 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Research Data */}
-          <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="bg-gradient-to-br from-purple-50 to-blue-50 border border-purple-200 rounded-lg shadow-md p-6">
             <div className="text-3xl mb-4">🔬</div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Privacy-Preserving Research</h3>
             <p className="text-gray-600 mb-4">
-              Contribute to medical research while maintaining privacy. 
-              Zero-knowledge proofs enable research participation with data protection.
+              Share your anonymized health data to advance medical research and earn $LIVES tokens. 
+              Zero-knowledge proofs ensure complete privacy protection.
             </p>
-            <ul className="text-sm text-gray-500 space-y-1">
-              <li>• Zero-knowledge research contribution</li>
-              <li>• Differential privacy protection</li>
-              <li>• Research reward distribution</li>
-              <li>• Academic partnership framework</li>
+            <ul className="text-sm text-gray-500 space-y-1 mb-4">
+              <li>• Earn 300-2000 LIVES tokens per contribution</li>
+              <li>• Zero-knowledge proof anonymization</li>
+              <li>• Ubuntu community governance oversight</li>
+              <li>• Support global medical advancement</li>
             </ul>
+            <div className="flex space-x-3">
+              <Link 
+                to="/research" 
+                className="bg-purple-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-purple-700 transition-colors"
+              >
+                Contribute Data
+              </Link>
+              <Link 
+                to="/research-api" 
+                className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors"
+              >
+                API Access
+              </Link>
+            </div>
           </div>
 
           {/* Healthcare Provider Integration */}
