@@ -1,0 +1,32 @@
+<svg width="300" height="80" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with subtle gradient -->
+  <rect width="300" height="80" fill="url(#headerGradient)" rx="8"/>
+  
+  <!-- Icon on left -->
+  <circle cx="40" cy="40" r="30" fill="url(#primaryGradient)" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Medical cross -->
+  <rect x="35" y="26" width="10" height="28" fill="white" rx="2"/>
+  <rect x="26" y="35" width="28" height="10" fill="white" rx="2"/>
+  
+  <!-- DNA helix elements -->
+  <path d="M22 22 Q30 30 38 22 Q46 14 54 22" stroke="white" stroke-width="2" fill="none" opacity="0.8"/>
+  <path d="M22 58 Q30 50 38 58 Q46 66 54 58" stroke="white" stroke-width="2" fill="none" opacity="0.8"/>
+  
+  <!-- Main text -->
+  <text x="85" y="35" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="700" fill="white">Ubuntu Health</text>
+  <text x="85" y="55" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="400" fill="rgba(255,255,255,0.8)">Decentralized Healthcare Infrastructure</text>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1f2937;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#374151;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

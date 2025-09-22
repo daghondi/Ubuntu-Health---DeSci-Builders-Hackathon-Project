@@ -30,17 +30,20 @@ export default function HomePage() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 biotech-gradient rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">UH</span>
-              </div>
-              <div>
-                <h1 className="text-lg font-bold text-gray-900">Ubuntu Health</h1>
-                <p className="text-xs text-gray-500">Network State Infrastructure</p>
-              </div>
+            <div className="flex items-center">
+              <img 
+                src="/logos/ubuntu-health-header.svg" 
+                alt="Ubuntu Health" 
+                className="h-10"
+              />
             </div>
             
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
+              <nav className="hidden md:flex items-center space-x-6">
+                <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
+                <a href="#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">Stories</a>
+                <a href="#sponsors" className="text-gray-600 hover:text-gray-900 transition-colors">Support</a>
+              </nav>
               <WalletConnectButton size="sm" variant="outline" />
             </div>
           </div>
@@ -507,13 +510,19 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8 mt-16">
+      <footer className="bg-gray-800 text-white py-12 mt-16">
         <div className="container mx-auto px-6 text-center">
-          <h3 className="text-xl font-semibold mb-2">Ubuntu Health</h3>
-          <p className="text-gray-400">
+          <div className="mb-6">
+            <img 
+              src="/logos/ubuntu-health-header.svg" 
+              alt="Ubuntu Health" 
+              className="h-12 mx-auto"
+            />
+          </div>
+          <p className="text-gray-400 max-w-2xl mx-auto mb-4">
             Healthcare infrastructure for Network States and decentralized communities
           </p>
-          <p className="text-sm text-gray-500 mt-4">
+          <p className="text-sm text-gray-500">
             Production Platform Preview • September 2025
           </p>
         </div>

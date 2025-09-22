@@ -1,7 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { LivesTokenLogo } from './LivesTokenLogo';
+import { DonationModal } from './DonationModal';
+import { TreatmentRequestModal } from './TreatmentRequestModal';
 
 interface Testimonial {
   id: string;
@@ -51,7 +53,9 @@ const testimonials: Testimonial[] = [
   }
 ];
 
-export function PatientTestimonials() {
+export const PatientTestimonials: React.FC = () => {
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+  const [isTreatmentModalOpen, setIsTreatmentModalOpen] = useState(false);
   return (
     <section className="py-24 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -148,15 +152,32 @@ export function PatientTestimonials() {
         <div className="text-center mt-12">
           <p className="text-lg text-gray-600 mb-6">Ready to help save lives or get the treatment you need?</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors">
+            <button 
+              onClick={() => setIsTreatmentModalOpen(true)}
+              className="px-8 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors"
+            >
               Request Treatment Support
             </button>
-            <button className="px-8 py-3 border-2 border-emerald-600 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition-colors">
+            <button 
+              onClick={() => setIsDonationModalOpen(true)}
+              className="px-8 py-3 border-2 border-emerald-600 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition-colors"
+            >
               Donate LIVES Tokens
             </button>
           </div>
         </div>
       </div>
+
+      {/* Modals */}
+      <DonationModal 
+        isOpen={isDonationModalOpen}
+        onClose={() => setIsDonationModalOpen(false)}
+      />
+      
+      <TreatmentRequestModal
+        isOpen={isTreatmentModalOpen}
+        onClose={() => setIsTreatmentModalOpen(false)}
+      />
     </section>
   );
 }

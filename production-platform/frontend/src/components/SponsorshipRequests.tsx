@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { LivesTokenLogo } from './LivesTokenLogo';
+import { DonationModal } from './DonationModal';
 
 interface SponsorshipRequest {
   id: string;
@@ -104,6 +105,13 @@ const getProgressColor = (percentage: number) => {
 };
 
 export function SponsorshipRequests() {
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+  const [selectedPatient, setSelectedPatient] = useState<SponsorshipRequest | null>(null);
+
+  const handleDonateClick = (patient: SponsorshipRequest) => {
+    setSelectedPatient(patient);
+    setIsDonationModalOpen(true);
+  };
   const [selectedRequest, setSelectedRequest] = useState<SponsorshipRequest | null>(null);
 
   return (
@@ -168,7 +176,10 @@ export function SponsorshipRequests() {
                   </p>
                 </div>
                 
-                <button className="w-full md:w-auto px-8 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center gap-2">
+                <button 
+                  onClick={() => handleDonateClick(sponsorshipRequests[0])}
+                  className="w-full md:w-auto px-8 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors flex items-center justify-center gap-2"
+                >
                   <LivesTokenLogo size={20} showText={false} />
                   Donate LIVES Now
                 </button>
@@ -243,11 +254,17 @@ export function SponsorshipRequests() {
                       </div>
                       
                       <div className="flex gap-3">
-                        <button className="px-6 py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors flex items-center gap-2">
+                        <button 
+                          onClick={() => handleDonateClick(request)}
+                          className="px-6 py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                        >
                           <LivesTokenLogo size={16} showText={false} />
                           Donate
                         </button>
-                        <button className="px-6 py-2 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors">
+                        <button 
+                          onClick={() => alert(`Learn more about ${request.patientName}'s treatment journey and medical needs.`)}
+                          className="px-6 py-2 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+                        >
                           Learn More
                         </button>
                       </div>
@@ -261,11 +278,24 @@ export function SponsorshipRequests() {
 
         {/* View All Button */}
         <div className="text-center mt-12">
-          <button className="px-8 py-3 border-2 border-emerald-600 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition-colors">
+          <button 
+            onClick={() => alert('Browse all treatment requests and find more patients to support in the Ubuntu Health community.')}
+            className="px-8 py-3 border-2 border-emerald-600 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition-colors"
+          >
             View All Sponsorship Requests →
           </button>
         </div>
       </div>
+
+      {/* Donation Modal */}
+      <DonationModal 
+        isOpen={isDonationModalOpen}
+        onClose={() => setIsDonationModalOpen(false)}
+        patientName={selectedPatient?.patientName}
+        treatmentType={selectedPatient?.condition}
+        targetAmount={selectedPatient?.targetAmount}
+        currentAmount={selectedPatient?.raisedAmount}
+      />
     </section>
   );
 }
