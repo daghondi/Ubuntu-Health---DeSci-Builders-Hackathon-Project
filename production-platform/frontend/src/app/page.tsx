@@ -86,6 +86,58 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* LIVES Token Showcase */}
+      <section className="py-16 bg-gradient-to-r from-emerald-50 to-blue-50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="flex items-center justify-center mb-8">
+              <LivesTokenLogo size={80} showText={false} />
+              <div className="ml-6 text-left">
+                <h2 className="text-4xl font-bold text-gray-900 mb-2">$LIVES Token</h2>
+                <p className="text-xl text-gray-600">The heartbeat of Ubuntu Health ecosystem</p>
+              </div>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <LivesTokenLogo size={48} showText={false} className="mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Earn Through Data</h3>
+                <p className="text-gray-600 text-sm">Contribute anonymized health data and earn 300-2000 LIVES tokens monthly</p>
+              </div>
+              
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <LivesTokenLogo size={48} showText={false} className="mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Fund Treatments</h3>
+                <p className="text-gray-600 text-sm">Sponsor life-saving treatments and support patients in need worldwide</p>
+              </div>
+              
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <LivesTokenLogo size={48} showText={false} className="mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Access Research</h3>
+                <p className="text-gray-600 text-sm">Use LIVES tokens to access privacy-preserving research APIs and data</p>
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="/research"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors"
+              >
+                <LivesTokenLogo size={20} showText={false} />
+                Start Earning LIVES
+              </a>
+              <a 
+                href="/sponsorship"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-emerald-600 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition-colors"
+              >
+                <LivesTokenLogo size={20} showText={false} />
+                Sponsor a Patient
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Patient Testimonials Section */}
       <PatientTestimonials />
 
