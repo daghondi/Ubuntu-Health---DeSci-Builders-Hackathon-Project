@@ -144,6 +144,8 @@ export function SponsorshipRequests() {
           <div 
             onClick={() => handlePatientClick(sponsorshipRequests[0])}
             className="bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-8 border-2 border-red-200 cursor-pointer hover:shadow-lg transition-all duration-300 hover:border-red-300"
+            data-patient="featured"
+            data-demo-highlight
           >
             <div className="flex items-start gap-6">
               <div className="relative flex-shrink-0">

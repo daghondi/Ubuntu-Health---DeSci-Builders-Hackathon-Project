@@ -5,6 +5,7 @@ import { LivesTokenLogo } from '../components/LivesTokenLogo';
 import { WalletConnectButton } from '../components/WalletConnectButton';
 import { PatientTestimonials } from '../components/PatientTestimonials';
 import { SponsorshipRequests } from '../components/SponsorshipRequests';
+import { DemoModeToggle } from '../components/DemoModeToggle';
 
 export default function HomePage() {
   const [backendStatus, setBackendStatus] = useState<any>(null);
@@ -26,6 +27,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* Demo Mode Toggle */}
+      <DemoModeToggle />
+      
       {/* Navigation Header */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +50,9 @@ export default function HomePage() {
                 <a href="/research" className="text-gray-600 hover:text-gray-900 transition-colors">Research</a>
                 <a href="/research-api" className="text-gray-600 hover:text-gray-900 transition-colors">API</a>
               </nav>
-              <WalletConnectButton size="sm" variant="outline" />
+              <div data-testid="wallet-connect">
+                <WalletConnectButton size="sm" variant="outline" />
+              </div>
             </div>
           </div>
         </div>
@@ -119,6 +125,8 @@ export default function HomePage() {
               <div 
                 onClick={() => window.location.href = '/research'}
                 className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                data-feature="share-earn"
+                data-demo-highlight
               >
                 <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <span className="text-2xl text-white">📊</span>
@@ -136,6 +144,8 @@ export default function HomePage() {
               <div 
                 onClick={() => document.getElementById('sponsors')?.scrollIntoView({ behavior: 'smooth' })}
                 className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                data-feature="fund-hope"
+                data-demo-highlight
               >
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <span className="text-2xl text-white">🤝</span>
@@ -450,7 +460,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
               Platform Impact & Innovation
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-700 max-w-2xl mx-auto">
               Revolutionizing healthcare research through privacy-preserving data sharing and Ubuntu philosophy
             </p>
           </div>
@@ -461,7 +471,7 @@ export default function HomePage() {
                 <span className="text-2xl font-bold">5</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">DeSci Tracks</h3>
-              <p className="text-gray-600">Comprehensive integration of all hackathon focus areas in a unified platform</p>
+              <p className="text-gray-700">Comprehensive integration of all hackathon focus areas in a unified platform</p>
             </div>
             
             <div className="glass-card rounded-2xl p-8 text-center border-l-4 border-purple-500">
@@ -469,7 +479,7 @@ export default function HomePage() {
                 <span className="text-lg font-bold">ZKP</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Privacy-First</h3>
-              <p className="text-gray-600">Zero-knowledge proofs and differential privacy protect patient data</p>
+              <p className="text-gray-700">Zero-knowledge proofs and differential privacy protect patient data</p>
             </div>
             
             <div className="glass-card rounded-2xl p-8 text-center border-l-4 border-blue-500">
@@ -477,7 +487,7 @@ export default function HomePage() {
                 <span className="text-2xl font-bold">4</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Data Categories</h3>
-              <p className="text-gray-600">Treatment outcomes, biomarkers, lifestyle, and traditional healing</p>
+              <p className="text-gray-700">Treatment outcomes, biomarkers, lifestyle, and traditional healing</p>
             </div>
           </div>
 
@@ -489,7 +499,7 @@ export default function HomePage() {
               <h3 className="text-xl font-semibold text-gray-800">Unique Innovations</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
-              <ul className="space-y-3 text-gray-700">
+              <ul className="space-y-3 text-gray-800">
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3 mt-2"></div>
                   <div>
@@ -509,7 +519,7 @@ export default function HomePage() {
                   </div>
                 </li>
               </ul>
-              <ul className="space-y-3 text-gray-700">
+              <ul className="space-y-3 text-gray-800">
                 <li className="flex items-start">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3 mt-2"></div>
                   <div>
@@ -539,7 +549,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
               Advance Medical Research & Earn LIVES Tokens
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-700 max-w-2xl mx-auto">
               Share your anonymized health data to accelerate medical breakthroughs worldwide. 
               Protected by zero-knowledge proofs and Ubuntu community governance.
             </p>
@@ -551,7 +561,7 @@ export default function HomePage() {
                 <span className="text-2xl text-white">🧬</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-3">Data Contribution</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-700 mb-4">
                 Contribute anonymized treatment outcomes, biomarkers, and wellness data to help researchers 
                 develop better treatments for future patients.
               </p>
@@ -566,7 +576,7 @@ export default function HomePage() {
                 <span className="text-2xl text-white">🔐</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-3">Privacy Protected</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-700 mb-4">
                 Your data is protected by zero-knowledge proofs. Researchers get insights without ever 
                 seeing your personal information or identity.
               </p>
@@ -578,7 +588,7 @@ export default function HomePage() {
                 <span className="text-2xl text-white">👥</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-3">Ubuntu Governance</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-700 mb-4">
                 Ubuntu community approves all research partnerships. Traditional healing knowledge 
                 is preserved and integrated with modern medicine.
               </p>
@@ -605,7 +615,7 @@ export default function HomePage() {
               <h2 className="text-3xl font-bold text-white mb-4">
                 Network State Healthcare Infrastructure
               </h2>
-              <p className="text-lg text-gray-200 max-w-3xl mx-auto">
+              <p className="text-lg text-gray-100 max-w-3xl mx-auto">
                 Ubuntu Health serves as foundational healthcare infrastructure that Network States and 
                 decentralized communities can use to coordinate advanced medical treatments for their citizens.
               </p>
@@ -617,21 +627,21 @@ export default function HomePage() {
                   <span className="text-2xl">🌍</span>
                 </div>
                 <h4 className="font-semibold text-white mb-2">Global Coordination</h4>
-                <p className="text-sm text-gray-300">Citizens access treatments worldwide through decentralized networks</p>
+                <p className="text-sm text-gray-200">Citizens access treatments worldwide through decentralized networks</p>
               </div>
               <div className="text-center group">
                 <div className="w-16 h-16 mx-auto mb-4 biotech-gradient rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <span className="text-2xl">🤝</span>
                 </div>
                 <h4 className="font-semibold text-white mb-2">Community Funding</h4>
-                <p className="text-sm text-gray-300">Pool resources for expensive procedures using blockchain technology</p>
+                <p className="text-sm text-gray-200">Pool resources for expensive procedures using blockchain technology</p>
               </div>
               <div className="text-center group">
                 <div className="w-16 h-16 mx-auto mb-4 biotech-gradient rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <span className="text-2xl">🔬</span>
                 </div>
                 <h4 className="font-semibold text-white mb-2">Research Advancement</h4>
-                <p className="text-sm text-gray-300">Contribute anonymized data to accelerate medical breakthroughs</p>
+                <p className="text-sm text-gray-200">Contribute anonymized data to accelerate medical breakthroughs</p>
               </div>
             </div>
           </div>
@@ -643,7 +653,7 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
               Live Platform Ready for Development
             </h2>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-700 mb-8 max-w-2xl mx-auto">
               The foundational architecture is deployed and operational. All API endpoints are live 
               and ready for integration with the frontend and smart contracts.
             </p>
@@ -686,10 +696,10 @@ export default function HomePage() {
               className="h-12 mx-auto"
             />
           </div>
-          <p className="text-gray-400 max-w-2xl mx-auto mb-4">
+          <p className="text-gray-300 max-w-2xl mx-auto mb-4">
             Healthcare infrastructure for Network States and decentralized communities
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-400">
             Production Platform Preview • September 2025
           </p>
         </div>
